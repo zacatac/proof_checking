@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class Proof {
+    ArrayList<Bundle>
+
 
     public Proof (TheoremSet theorems) {
     }
@@ -67,5 +69,12 @@ public class Proof {
 
     public boolean isComplete ( ) {
         return true;
+    }
+
+    public ArrayList<Bundle> showMethod(ExpTree showStatement) {
+        ArrayList<Bundle> tempList = new ArrayList<Bundle>();
+        Bundle showBundle = new Bundle(showExpTree,LINE,thmnAME)
+        tempList.add(0, showBundle);
+
     }
 }
