@@ -1,5 +1,4 @@
 public class BinaryTree {
-	//my code below
 	public int height() {
 		return height(myRoot);
 	}
@@ -22,6 +21,10 @@ public class BinaryTree {
 		BinaryTree t = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
 		t.print();
 		System.out.println(t.height());
+		BinaryTree t2 = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
+		System.out.println(t.equals(t2));//yes this is True
+		BinaryTree t3 = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("e"), null), new TreeNode("c")) );
+		System.out.println(t.equals(t3));//yes this is False
 	}
 
 	private static class TreeNode {
@@ -62,6 +65,24 @@ public class BinaryTree {
 	        System.out.print (indent1);
 	    }
 	    System.out.println (obj);
+	}
+	public boolean equals(BinaryTree t) {
+		return equals(myRoot, t.myRoot);
+	}
+	public static boolean equals(TreeNode first,TreeNode sec) {
+		if (first==null && sec==null) {
+			return true;
+		}
+		if (first!=null && sec==null) {
+			return false;
+		}
+		if (first==null && sec!=null) {
+			return false;
+		}
+		if (sec.myItem!=first.myItem) {
+			return false;
+		}
+		return (equals(first.myLeft, sec.myLeft) && equals(first.myRight, sec.myRight));
 	}
 }
 
