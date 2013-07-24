@@ -27,7 +27,7 @@ public class BinaryTree {
 		System.out.println(t.equals(t3));//yes this is False
 	}
 
-	private static class TreeNode {
+	public static class TreeNode {
 		
 		public Object myItem;
 		public TreeNode myLeft;
