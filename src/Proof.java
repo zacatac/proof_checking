@@ -139,11 +139,28 @@ public class Proof {
 
     public void repeat(Bundle repeatBundle) throws IllegalLineException{
         if (truths.contains(repeatBundle)){
-//            System.out.println(truths);
-            truths.remove(repeatBundle);
-            truths.add(repeatBundle);
+            Bundle oldBundle = truths.get(truths.indexOf(repeatBundle));
+            if (oldBundle.getLineNumber().equals( repeatBundle.getRefLine1())){
+                truths.remove(repeatBundle);
+                truths.add(repeatBundle);
+            } else {
+                throw new IllegalLineException("Error: The repeat reference line did not match the expression at that line.");
+            }
         } else {
-            throw new IllegalLineException("Repeat is only legal if the expression already exists");
+            throw new IllegalLineException("Error: Repeat is only legal if the expression already exists");
+        }
+    }
+
+    public void IC(Bundle ICBundle) throws IllegalLineException,IllegalInferenceException{
+        BinaryTree expressionToProve = ICBundle.getMyTree();
+        String lineReference = ICBundle.getRefLine1();
+        if (expressionToProve.getMyRoot().equals("=>")){
+            if (truths.contains(expressionToProve.getMyRight())){
+                Bundle referencedBundle = truths.get(truths.indexOf(expressionToProve.getMyRight()));
+                if (lineReference.equals(referencedBundle.getLineNumber())){
+                    truths.add(ICBundle);
+                }
+            }
         }
     }
 

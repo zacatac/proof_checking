@@ -92,9 +92,10 @@ public class ProofTest {
         theRightTree.getMyRoot();
         Bundle theRightBundle = new Bundle("2",theRightTree,"repeat","1");
 
-        System.out.println(proof.getTruths());
+        Bundle theWrongBundleReference = new Bundle("2",theRightTree,"repeat","2");
+//        proof.repeat(theWrongBundleReference); // Throws exception for using the wrong line reference
+
         proof.repeat(theRightBundle);
-        System.out.println(proof.getTruths());
 
         LinkedList<Bundle> truths = proof.getTruths();
         assertTrue(truths.get(truths.size()-1).equals(theRightBundle));
