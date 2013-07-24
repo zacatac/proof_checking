@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.LinkedList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -48,12 +50,13 @@ public class bundleTest {
 
 
     }
+
     @Test
     public void testEquals(){
         BinaryTree mainTree = new BinaryTree();
         Bundle mainBundle = new Bundle("1",mainTree,"2","3","4");
 
-        List notEvenABundle = new List();
+        LinkedList<Bundle> notEvenABundle = new LinkedList<Bundle>();
         assertFalse(mainBundle.equals(notEvenABundle));
 
         BinaryTree anotherTree = new BinaryTree(new BinaryTree.TreeNode("a"));
@@ -63,7 +66,11 @@ public class bundleTest {
         Bundle sameBundle = new Bundle("1",mainTree,"2","3","4");
         assertTrue(mainBundle.equals(sameBundle));
 
+        Bundle sameTree = new Bundle(null,mainTree,null);
+        assertTrue(mainBundle.equals(sameTree));
+
         assertFalse(mainBundle.equals(null));
+
 
     }
 }

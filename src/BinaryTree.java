@@ -17,6 +17,18 @@ public class BinaryTree {
 		myRoot = t;
 	}
 
+    public TreeNode getMyRoot(){
+       return myRoot;
+    }
+
+    public TreeNode getMyLeft(){
+       return myRoot.getMyLeft();
+    }
+
+    public TreeNode getMyRight() {
+        return myRoot.getMyRight();
+    }
+
 	public static void main (String [ ] args) {
 		BinaryTree t = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
 		t.print();
@@ -29,15 +41,29 @@ public class BinaryTree {
 
 	public static class TreeNode {
 		
-		public Object myItem;
-		public TreeNode myLeft;
-		public TreeNode myRight;
+		private Object myItem;
+		private TreeNode myLeft;
+		private TreeNode myRight;
 		
-		public TreeNode (Object obj) {
+		public Object getMyItem() {
+            return myItem;
+        }
+
+        public TreeNode getMyLeft() {
+            return myLeft;
+        }
+
+        public TreeNode getMyRight() {
+            return myRight;
+        }
+
+        public TreeNode (Object obj) {
 			myItem = obj;
 			myLeft = myRight = null;
 		}
-		
+
+
+
 		public TreeNode (Object obj, TreeNode left, TreeNode right) {
 			myItem = obj;
 			myLeft = left;
@@ -66,9 +92,23 @@ public class BinaryTree {
 	    }
 	    System.out.println (obj);
 	}
-	public boolean equals(BinaryTree t) {
-		return equals(myRoot, t.myRoot);
-	}
+
+    @Override
+    public boolean equals(Object t) {
+        BinaryTree testTree;
+        try {
+            testTree = (BinaryTree)t;
+        } catch (ClassCastException c){
+            return false;
+        }
+
+        if (testTree == null){
+            return false;
+        } else {
+            return equals(myRoot, testTree.myRoot);
+        }
+    }
+
 	public static boolean equals(TreeNode first,TreeNode sec) {
 		if (first==null && sec==null) {
 			return true;
@@ -84,5 +124,6 @@ public class BinaryTree {
 		}
 		return (equals(first.myLeft, sec.myLeft) && equals(first.myRight, sec.myRight));
 	}
+
 }
 

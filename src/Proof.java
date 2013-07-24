@@ -1,12 +1,12 @@
 import java.util.*;
 
 public class Proof {
-    private List truths;
+    private LinkedList<Bundle> truths;
     private Bundle lastTruthInScope; //reassign tail in globalTruth to this after completing shows
     TheoremSet myTheorems;
 
     public Proof (TheoremSet theorems) {
-        truths = new List();
+        truths = new LinkedList<Bundle>();
         lastTruthInScope = null;
         myTheorems = theorems;
     }
@@ -18,7 +18,7 @@ public class Proof {
         return null;
     }
 
-    public List getTruths(){
+    public LinkedList<Bundle> getTruths(){
         return truths;
     }
     public Bundle getLastTruthInScope(){
@@ -93,7 +93,10 @@ public class Proof {
      * updated to that show statement, because the level above is now allowed to
      * use that show statement as a truth.
      */
-    public void show(Bundle showBundle) {
+    public void show(Bundle showBundle) throws IllegalLineException{
+        if (showBundle.getMyTree() == null) {
+            throw new IllegalLineException("ERROR: Bundle cannot contain a null tree");
+        }
         lastTruthInScope = showBundle;
         truths.add(lastTruthInScope); // updates the latest scope.
     }
@@ -101,16 +104,54 @@ public class Proof {
     /**
      * Any assumption can be immediately added to the list of truths
      */
-    public void assume(Bundle assumeBundle){
-        lastTruthInScope = assumeBundle;
-        truths.add(lastTruthInScope);
+    public void assume(Bundle assumeBundle) throws Exception{
+        BinaryTree assumeTree = assumeBundle.getMyTree();
+        Bundle lastShow = null;
+        BinaryTree lastShowTree = null;
+
+        try{
+            lastShow  = (Bundle)truths.get(truths.size()-1);
+            lastShowTree = lastShow.getMyTree();
+        } catch (NullPointerException n){
+            System.err.println("ERROR: List has failed to call the last object");
+        } catch (ClassCastException c){
+            System.err.println("ERROR: The truth list is internally inconsistent.");
+        }
+        if (lastShow.getThrmName().equals("show")){
+            BinaryTree notTree;
+            BinaryTree leftTree;
+            BinaryTree.TreeNode leftNode = lastShowTree.getMyLeft();
+            BinaryTree.TreeNode leftLeftNode = leftNode.getMyLeft();
+            BinaryTree.TreeNode rightLeftNode = leftNode.getMyRight();
+            notTree = new BinaryTree(new BinaryTree.TreeNode("~",lastShowTree.getMyRoot(),null));
+            leftTree = new BinaryTree(new BinaryTree.TreeNode(leftNode.getMyItem(),leftLeftNode,rightLeftNode));
+            if (assumeTree.equals(notTree) || assumeTree.equals(leftTree)){
+                lastTruthInScope = assumeBundle;
+                truths.add(lastTruthInScope);
+            } else {
+                throw new IllegalInferenceException("Invalid assumption code 2");
+            }
+        } else {
+            throw new IllegalInferenceException("Invalid assumption code 1");
+        }
+
+    }
+
+    public void repeat(Bundle repeatBundle) throws IllegalLineException{
+        if (truths.contains(repeatBundle)){
+//            System.out.println(truths);
+            truths.remove(repeatBundle);
+            truths.add(repeatBundle);
+        } else {
+            throw new IllegalLineException("Repeat is only legal if the expression already exists");
+        }
     }
 
     /**
      * Takes in a check Bundle and asks if it is consistent
      * within the defined scope (defined by lastTruthInScope)
      */
-    public void checkLine(Bundle checkBundle){
+    public void checkLine(Bundle checkBundle) throws Exception{
 
         String thrmName = checkBundle.getThrmName();
         //Purposely avoided using switch because the

@@ -67,12 +67,13 @@ public class Bundle  {
         if (testBundle == null){
             return false;
         } else {
-            return ( (this.getLineNumber().equals(testBundle.getLineNumber()) &&
-                      this.getMyTree().equals(testBundle.getMyTree()) &&
-                      this.getThrmName().equals(testBundle.getThrmName()) &&
-                      this.getRefLine1().equals(getRefLine1()) &&
-                      this.getRefLine2().equals(getRefLine2())
-                    ));
+            return this.myTree.equals(testBundle.getMyTree());
+//            return ( (this.getLineNumber().equals(testBundle.getLineNumber()) &&
+//                      this.getMyTree().equals(testBundle.getMyTree()) &&
+//                      this.getThrmName().equals(testBundle.getThrmName()) &&
+//                      this.getRefLine1().equals(getRefLine1()) &&
+//                      this.getRefLine2().equals(getRefLine2())
+//                    ));
         }
 
     }
@@ -80,12 +81,12 @@ public class Bundle  {
     @Override
     public String toString(){
         String outStirng = "";
+
         outStirng += "LINE NUMBER: " + this.lineNumber + "\n";
         outStirng += "THRM NAME  : " + this.thrmName+ "\n";
         outStirng += "REF LINE 1 : " + this.refLine1+ "\n";
         outStirng += "REF LINE 2 : " + this.refLine2+ "\n";
-        outStirng += "MY TREE: " + this.myTree+ "\n";
-
+        outStirng += "MY TREE: " + this.myTree;
         return outStirng;
     }
 }
