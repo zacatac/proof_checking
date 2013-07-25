@@ -37,7 +37,7 @@ public class ProofTest {
     public void testAssume() throws Exception{
         Proof proof = new Proof();
         BinaryTree tree = new BinaryTree (new BinaryTree.TreeNode("=>", new BinaryTree.TreeNode("&", new BinaryTree.TreeNode("p"), new BinaryTree.TreeNode("q")), new BinaryTree.TreeNode("q")) );
-        Bundle dummyBundle = new Bundle(null,new BinaryTree(),"show");       //Checks that the last bundle in truths is pulled
+        Bundle dummyBundle = new Bundle("2",new BinaryTree(),"show");       //Checks that the last bundle in truths is pulled
         Bundle mainBundle = new Bundle("1",tree,"show");
         // Bundle wrongThrmNameBundle = new Bundle("2",tree,"",) cant test yet
 
@@ -45,7 +45,7 @@ public class ProofTest {
         proof.show(mainBundle);
 
         BinaryTree notTheRightTree = new BinaryTree();
-        Bundle notTheRightBundle = new Bundle(null,notTheRightTree,null);
+        Bundle notTheRightBundle = new Bundle("1",notTheRightTree,"2");
         //proof.assume(notTheRightBundle); //Throws exception
 
 
@@ -61,7 +61,7 @@ public class ProofTest {
         proof.show(mainBundle);
 
         BinaryTree leftAssumeTree = new BinaryTree(new BinaryTree.TreeNode("&", new BinaryTree.TreeNode("p"), new BinaryTree.TreeNode("q")));
-        Bundle assumeRightBundle2 = new Bundle(null,leftAssumeTree,null);
+        Bundle assumeRightBundle2 = new Bundle("2",leftAssumeTree,"2");
 
         proof.assume(assumeRightBundle2);
         assertEquals(assumeRightBundle2,proof.getLastTruthInScope());
@@ -84,7 +84,7 @@ public class ProofTest {
         proof.show(mainBundle);
 
         BinaryTree notTheRightTree = new BinaryTree();
-        Bundle notTheRightBundle = new Bundle(null,notTheRightTree,null);
+        Bundle notTheRightBundle = new Bundle("2",notTheRightTree,"2");
 //        proof.repeat(notTheRightBundle); // Should throw exception, check if you want
 
         BinaryTree theRightTree = new BinaryTree(new BinaryTree.TreeNode("=>", new BinaryTree.TreeNode("&", new BinaryTree.TreeNode("p"), new BinaryTree.TreeNode("q")), new BinaryTree.TreeNode("q")) );
@@ -104,6 +104,23 @@ public class ProofTest {
         }
 
 
+    }
+
+
+    @Test
+    public void testIC() throws Exception{
+        Proof proof = new Proof();
+        BinaryTree tree = new BinaryTree(new BinaryTree.TreeNode("=>",new BinaryTree.TreeNode("q"),new BinaryTree.TreeNode("q")));
+        tree.print();
+        Bundle showBundle = new Bundle("1",tree,"show");
+        Bundle assumeBundle = new Bundle("2",new BinaryTree(new BinaryTree.TreeNode("q")),"assume");
+        Bundle ICBundle = new Bundle("3",tree,"ic","2");
+
+        proof.show(showBundle);
+        proof.assume(assumeBundle);
+        proof.IC(ICBundle);
+
+        assertEquals("true",);
     }
 
     @Test

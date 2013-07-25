@@ -24,6 +24,10 @@ public class Bundle  {
 
 
     public Bundle(String lineNumber,BinaryTree myTree,String thrmName,String refLine1, String refLine2){
+        if (myTree == null || lineNumber == null || thrmName == null) {
+            System.err.println("ERROR: The Bundle must be initialized with the Line Number, Binary Tree, and Theorem Name");
+        }
+
         this.lineNumber = lineNumber;
         this.myTree = myTree;
         this.thrmName = thrmName;

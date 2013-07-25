@@ -3,12 +3,12 @@ import java.util.*;
 public class Proof {
     private LinkedList<Bundle> truths;
     private Bundle lastTruthInScope; //reassign tail in globalTruth to this after completing shows
-    TheoremSet myTheorems;
+//    TheoremSet myTheorems;
 
     public Proof (TheoremSet theorems) {
         truths = new LinkedList<Bundle>();
         lastTruthInScope = null;
-        myTheorems = theorems;
+//        myTheorems = theorems;
     }
 
     public Proof (){
@@ -28,12 +28,12 @@ public class Proof {
 		String[] splitted = x.split (" ");
 		Stack characters = new Stack( );
 			for(int k=0; k < splitted.length; k++) {
-				if(splitted[k].charAt(0) == '(') { 
-					Expression NewExpress = new Expression(splitted[k]);
+				if(splitted[k].charAt(0) == '(') {
+//					Expression NewExpress = new Expression(splitted[k]);
 					if (splitted[k].charAt(0) == '(') {
 //						charcters.push(parts[k].charAt(0));
 						//opening parenthesis on stack
-						//**Check for nested parenthesis (not done, maybe it would be easier to use a tree for this 
+						//**Check for nested parenthesis (not done, maybe it would be easier to use a tree for this
                         //or some kind of recursion)
 					}
 					if (splitted[k].charAt(0) == ')') {
@@ -51,8 +51,8 @@ public class Proof {
 							//stack should be empty at end
 							//(same number of parens pushed on and popped off)
 							throw new IllegalLineException("");
-							
-							
+
+
                         } else if(splitted[0].equals("assume")) {
 							//fill
 							}
@@ -71,10 +71,10 @@ public class Proof {
 						else if(splitted[0].equals("repeat")) {
 							//fill
 							}
-						
+
 					}
 				}
-				
+
 			}
 	}
 
@@ -154,14 +154,44 @@ public class Proof {
     public void IC(Bundle ICBundle) throws IllegalLineException,IllegalInferenceException{
         BinaryTree expressionToProve = ICBundle.getMyTree();
         String lineReference = ICBundle.getRefLine1();
-        if (expressionToProve.getMyRoot().equals("=>")){
-            if (truths.contains(expressionToProve.getMyRight())){
-                Bundle referencedBundle = truths.get(truths.indexOf(expressionToProve.getMyRight()));
+        BinaryTree rightTree = new BinaryTree(expressionToProve.getMyRight());
+        Bundle rightICBundle = new Bundle(ICBundle.getLineNumber(),rightTree,ICBundle.getThrmName(),ICBundle.getRefLine1());
+        if (expressionToProve.getMyRoot().getMyItem().equals("=>")){
+            if (truths.contains(rightICBundle)){
+                Bundle referencedBundle = truths.get(truths.indexOf(rightICBundle));
                 if (lineReference.equals(referencedBundle.getLineNumber())){
                     truths.add(ICBundle);
+                } else {
+                    throw new IllegalInferenceException("Line number does not reference the \n right-hand side  of the implication");
                 }
+            } else {
+                throw new IllegalInferenceException("Right-hand side must be proven already");
+            }
+        } else {
+            throw new IllegalInferenceException("IC takes an implication");
+        }
+    }
+
+    public void changeTruths(){
+        Iterator<Bundle> iter = truths.iterator();
+        Bundle lastShow = null;
+        while (iter.hasNext()){
+            Bundle nxtBundle = iter.next();
+            if (nxtBundle.getThrmName().equals("show")){
+                lastShow = nxtBundle;
             }
         }
+        if (lastShow == null){
+            System.err.println("ERROR: truths is internally inconsistent");
+        } else {
+            int lastIndex = truths.lastIndexOf(lastShow);
+            lastShow = new Bundle(lastShow.getLineNumber(),lastShow.getMyTree(),"true");
+            truths.add(lastIndex,lastShow);
+            for (int i = lastIndex+1; i < truths.size(); i++){
+                truths.remove(i);
+            }
+        }
+
     }
 
     /**
