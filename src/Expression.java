@@ -1,11 +1,24 @@
 
-
 //expression tree time!
 
 public class Expression {
+    
+    protected String fullExpr;
+    
+    //FOR TESTING PURPOSES, CONSTRUCTOR DOES NOT THROW ILLEGAL LINE EXCEPTION YET
+    // append throws IllegalLineException to the end of the constructor declaration later
+        //public Expression (String s) throws IllegalLineException {
+    	//    fullExpr = s;	
+    	//}
 
-    public Expression (String s) throws IllegalLineException {
-	}
+    public Expression (String s) {
+        fullExpr = s;	
+    }
+
+
+    //public Expression (String s) throws IllegalLineException {
+    //    fullExpr = s;	
+    //}
 
 //	private ExpNode treeChecker (String k) throws IllegalLineException {
 //
