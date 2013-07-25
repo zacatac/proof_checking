@@ -160,7 +160,7 @@ public class BinaryTree {
 		if (first==null && sec!=null) {
 			return false;
 		}
-		if (sec.myItem!=first.myItem) {
+		if (!sec.myItem.equals(first.myItem)) {
 			return false;
 		}
 		return (equals(first.myLeft, sec.myLeft) && equals(first.myRight, sec.myRight));
@@ -178,7 +178,7 @@ public class BinaryTree {
     // and involves only the operations + and *.
     protected TreeNode exprTreeHelper (String expr) {
         if (expr.charAt(0) != '(') {
-            return new TreeNode(expr.charAt(0), null, null); // you fill this in
+        	return new TreeNode(expr.substring(0,1), null, null); // you fill this in
         } else {
             // expr is a parenthesized expression.
             // Strip off the beginning and ending parentheses,
@@ -188,7 +188,7 @@ public class BinaryTree {
             
             int opPos = 0; // 
             int opPosX = 0; // keeps track of IMPLIES (=>)
-            int opPosN = 0; // keeps track of NOT (~)
+            //int opPosN = 0; // keeps track of NOT (~)
             for (int k=1; k<expr.length()-1; k++) {
                 
             	if (expr.charAt (k) != '(') {
@@ -214,13 +214,7 @@ public class BinaryTree {
             
             String opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
             String opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
-  
             String op = expr.substring (opPos, opPos + opPosX +1); // myItem
-//            System.out.println ("expression = " + expr);
-//            System.out.println ("operand 1  = " + opnd1);
-//            System.out.println ("operator   = " + op);
-//            System.out.println ("operand 2  = " + opnd2);
-            System.out.println ( );
             return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
             
         }
