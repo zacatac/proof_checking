@@ -41,7 +41,7 @@ public class BinaryTree {
         if (thm==null) {
             return t;
         }
-        if (thm.myItem=="=>"||thm.myItem=="&"||thm.myItem=="|"||thm.myItem=="~") {
+        if (thm.myItem.equals("=>")||thm.myItem.equals("&")||thm.myItem.equals("|")||thm.myItem.equals("~")) {
             if (thm.myItem!=myRoot.myItem) {
                 t.put("false", myRoot);
                 return t;
