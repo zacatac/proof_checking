@@ -216,9 +216,39 @@ public class BinaryTree {
             String opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
             String op = expr.substring (opPos, opPos + opPosX +1); // myItem
             return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
-            
+
         }
     }
-    
+    public String inOrderString(){
+        String outString = "" + myRoot.myItem;
+        outString += inOrderStringHelper(getMyLeft(),getMyRight(),outString);
+        outString = outString.substring(1);
+        return outString;
+//        return "inOrderString hasn't been implemented yet.";
+    }
 
+    private static String inOrderStringHelper(TreeNode myLeft, TreeNode myRight, String soFar) {
+        String update = "";
+
+        if (myLeft == null ){
+            if (myRight == null){ // Base case
+                return soFar;
+            }
+//            update += soFar + myRight.getMyItem();
+            return inOrderStringHelper(myRight.getMyLeft(),myRight.getMyRight(),update);
+        } else {
+
+            if (myRight == null){
+                update += myLeft.getMyItem() + soFar;
+                return inOrderStringHelper(myLeft.getMyLeft(),myLeft.getMyRight(),update);
+            }  else {
+
+            update = myLeft.myItem + soFar + myRight.myItem;
+            return inOrderStringHelper(myLeft.getMyLeft(),myLeft.getMyRight(),update) +
+                    inOrderStringHelper(myRight.getMyLeft(), myRight.getMyRight(),update);
+
+            }
+
+        }
+    }
 }
