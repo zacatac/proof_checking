@@ -13,7 +13,6 @@ public class Proof {
         }
         lastShow = null;
         allStatements = new ArrayList<Bundle>();
-
     }
 
     public Proof (){
@@ -29,46 +28,87 @@ public class Proof {
     public Bundle getLastShow(){
         return lastShow;
     }
-    public void extendProof (String x) throws IllegalLineException, IllegalInferenceException {
+    public void extendProof (String x) throws IllegalLineException, IllegalInferenceException{
         String[] inputs = x.split("\\s+");
-        if (inputs.length > 5 ){
+        if (inputs.length > 4 ){
             throw new IllegalLineException("Input has too many fields");
         }
 
+        if (inputs.length == 1){
+           if (inputs[0].equals("print")) {
+               print();
+           } else {
+               throw new IllegalLineException("The only legal one field input is \"show\"");
+           }
+        }
+
+        String reason = inputs[0];
+        Bundle checkBundle = null;
+
+        if (inputs.length == 2){
+            String expression = inputs[1];
+            if (reason.equals("show")){
+                checkBundle = new Bundle(addLine(),makeTree(expression),reason);
+                return;
+            }
+            if (reason.equals("assume")) {
+                checkBundle = new Bundle(addLine(),makeTree(expression),reason);
+                return;
+            }
+            Bundle testBundle = findUserTheorem(reason);
+            if (testBundle != null){
+                checkBundle = new Bundle(addLine(),makeTree(expression),reason);
+            } else {
+                throw new IllegalLineException(reason + " is not a valid reason");
+            }
+        }
+
+        if(inputs.length == 3){
+            String expression = inputs[2];
+            String refLine1 = inputs[1];
+            if (reason.equals("repeat")){
+                checkBundle = new Bundle(addLine(),makeTree(expression),reason,refLine1);
+                return;
+            }
+            if (reason.equals("ic")){
+                checkBundle = new Bundle(addLine(),makeTree(expression),reason,refLine1);
+                return;
+            }
+            Bundle userBundle = findUserTheorem(reason);
+            if (userBundle != null ||
+                    reason.equals("mt")||
+                    reason.equals("mp") ||
+                    reason.equals("co")) {
+                    throw new IllegalLineException(reason + " does not accept a single line reference");
+            } else {
+                throw new IllegalLineException(reason + " is not a valid reason");
+            }
+        }
 
 
-//		String[] splitted = x.split (" ");
-//		Stack characters = new Stack( );
-//			for(int k=0; k < splitted.length; k++) {
-//				if(splitted[k].charAt(0) == '(') {
-////					Expression NewExpress = new Expression(splitted[k]);
-//					if (splitted[k].charAt(0) == '(') {
-////						charcters.push(parts[k].charAt(0));
-//						//opening parenthesis on stack
-//						//**Check for nested parenthesis (not done, maybe it would be easier to use a tree for this
-//                        //or some kind of recursion)
-//					}
-//					if (splitted[k].charAt(0) == ')') {
-//						characters.pop();
-//
-//                        /**
-//                         * All of these must be made into Bundles,
-//                         * check out the Bundle class for more details
-//                         *
-//                         * All legal bundles (NO IllegalLineException cases)
-//                         * can be passed directly to checkLine so that the line
-//                         * can begin to be checked for inference consistency
-//                         */
-//					}
-//				}
-//
-//			}
+        try {
+            checkLine(checkBundle);
+        } catch (Exception e){
+            System.err.println("NOOOOOOOOOOOOOOOOOOO");
+        }
 	}
 
-    public String  parseLineNumber(String s){
-        return s;
+    /**
+     * Takes in the String form of the expression and outputs the Binary Tree form
+     * If the expression is erroneous in any way, this is where exceptions will be
+     * thrown.
+     * @param expression
+     * @return BinaryTree
+     * @throws IllegalLineException
+     */
+    private BinaryTree makeTree(String expression) throws  IllegalLineException{
+        //
+        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 
+    private String addLine() {
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
 
 
     public String toString ( ) {
