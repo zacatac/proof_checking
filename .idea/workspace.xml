@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Proof.java" line="199" />
+    <bookmark url="file://$PROJECT_DIR$/src/Proof.java" line="219" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="698b4a4c-8526-42c9-8489-940580da5982" name="Default" comment="" />
     <ignored path="61B_project2.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ProofChecker.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374169433533" ignored="false" />
-    <file path="/Proof.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374953806204" ignored="false" />
+    <file path="/Proof.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374955326586" ignored="false" />
     <file path="/fragment.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855307575" ignored="false" />
     <file path="/Bundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374948835649" ignored="false" />
     <file path="/myListBundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374684592643" ignored="false" />
@@ -21,7 +21,7 @@
     <file path="/bundleTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374704175931" ignored="false" />
     <file path="/ProofTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374854035231" ignored="false" />
     <file path="/BinaryTree.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855712790" ignored="false" />
-    <file path="/TheoremSet.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374776113795" ignored="false" />
+    <file path="/TheoremSet.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374954839172" ignored="false" />
     <file path="$PROJECT_DIR$/../CS61BL/LinkedLists/tests/ListTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374702868746" ignored="false" />
     <file path="/ListTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374703342908" ignored="false" />
     <file path="/Expression.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374772668288" ignored="false" />
@@ -94,16 +94,16 @@
       <file leaf-file-name="TheoremSet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="22" selection-start="509" selection-end="509" vertical-scroll-proportion="0.0">
+            <state line="8" column="43" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProofChecker.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ProofChecker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ProofChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="48" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.6978998">
+            <state line="66" column="48" selection-start="2468" selection-end="2468" vertical-scroll-proportion="-44.88">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Proof.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Proof.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Proof.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="49" selection-start="3078" selection-end="3078" vertical-scroll-proportion="0.0">
+            <state line="43" column="93" selection-start="1253" selection-end="1253" vertical-scroll-proportion="-2.9262295">
               <folding />
             </state>
           </provider>
@@ -209,12 +209,12 @@
         <option value="$PROJECT_DIR$/tests/bundleTest.java" />
         <option value="$PROJECT_DIR$/src/Expression.java" />
         <option value="$PROJECT_DIR$/tests/ExpressionTest.java" />
-        <option value="$PROJECT_DIR$/src/TheoremSet.java" />
         <option value="$PROJECT_DIR$/tests/ProofTest.java" />
         <option value="$PROJECT_DIR$/tests/BinaryTreeTest.java" />
         <option value="$PROJECT_DIR$/src/Bundle.java" />
         <option value="$PROJECT_DIR$/src/BinaryTree.java" />
         <option value="$PROJECT_DIR$/src/ProofChecker.java" />
+        <option value="$PROJECT_DIR$/src/TheoremSet.java" />
         <option value="$PROJECT_DIR$/src/Proof.java" />
       </list>
     </option>
@@ -254,7 +254,38 @@
     <panes>
       <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="61B_project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="61B_project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proof_checking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="61B_project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proof_checking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="PackagesPane" />
     </panes>
@@ -530,7 +561,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30757576" sideWeight="0.7119403" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30757576" sideWeight="0.7119403" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.37478706" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="20" y="566" width="1320" height="342" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -673,20 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="22" selection-start="509" selection-end="509" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Proof.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="49" selection-start="3078" selection-end="3078" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bundle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="52" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
@@ -710,10 +727,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ProofChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="48" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.6978998">
+        <state line="66" column="48" selection-start="2468" selection-end="2468" vertical-scroll-proportion="-44.88">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="43" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Proof.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="93" selection-start="1253" selection-end="1253" vertical-scroll-proportion="-2.9262295">
+          <folding />
         </state>
       </provider>
     </entry>

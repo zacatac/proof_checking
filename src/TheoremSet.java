@@ -6,7 +6,7 @@ public class TheoremSet {
     public TheoremSet ( ) {
     }
 
-    public LinkedList<Bundle> getMyTeorems(){
+    public LinkedList<Bundle> getMyTheorems(){
         return myTheorems;
     }
 

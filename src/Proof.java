@@ -4,12 +4,15 @@ public class Proof {
     private LinkedList<Bundle> truths;
     private Bundle lastShow; //reassign tail in globalTruth to this after completing shows
     private ArrayList<Bundle> allStatements;
+    private final int numberOfUserTheorems;
 
     public Proof (TheoremSet theorems) {
         if (theorems == null){
             truths = new LinkedList<Bundle>();
+            numberOfUserTheorems = 0;
         } else {
-            truths = theorems.getMyTeorems();
+            truths = theorems.getMyTheorems();
+            numberOfUserTheorems = truths.size();
         }
         lastShow = null;
         allStatements = new ArrayList<Bundle>();
@@ -30,15 +33,18 @@ public class Proof {
     }
     public void extendProof (String x) throws IllegalLineException, IllegalInferenceException{
         String[] inputs = x.split("\\s+");
-        if (inputs.length > 4 ){
+        if (inputs.length > 4){
             throw new IllegalLineException("Input has too many fields");
+        }
+        if (inputs.length == 0) {
+
         }
 
         if (inputs.length == 1){
            if (inputs[0].equals("print")) {
                print();
            } else {
-               throw new IllegalLineException("The only legal one field input is \"show\"");
+               throw new IllegalLineException("The only legal one field input is \"print\"");
            }
         }
 
@@ -48,18 +54,26 @@ public class Proof {
         if (inputs.length == 2){
             String expression = inputs[1];
             if (reason.equals("show")){
-                checkBundle = new Bundle(addLine(),makeTree(expression),reason);
+                checkBundle = new Bundle(addLine(true),makeTree(expression),reason);
                 return;
             }
             if (reason.equals("assume")) {
-                checkBundle = new Bundle(addLine(),makeTree(expression),reason);
+                checkBundle = new Bundle(addLine(false),makeTree(expression),reason);
                 return;
             }
             Bundle testBundle = findUserTheorem(reason);
             if (testBundle != null){
-                checkBundle = new Bundle(addLine(),makeTree(expression),reason);
+                checkBundle = new Bundle(addLine(false),makeTree(expression),reason);
             } else {
+                if (reason.equals("co")||
+                        reason.equals("ic")||
+                        reason.equals("mt")||
+                        reason.equals("mp")||
+                        reason.equals("repeat")){
+                    throw new IllegalLineException(reason + " takes at least one line reference");
+                } else {
                 throw new IllegalLineException(reason + " is not a valid reason");
+                }
             }
         }
 
@@ -67,11 +81,11 @@ public class Proof {
             String expression = inputs[2];
             String refLine1 = inputs[1];
             if (reason.equals("repeat")){
-                checkBundle = new Bundle(addLine(),makeTree(expression),reason,refLine1);
+                checkBundle = new Bundle(addLine(false),makeTree(expression),reason,refLine1);
                 return;
             }
             if (reason.equals("ic")){
-                checkBundle = new Bundle(addLine(),makeTree(expression),reason,refLine1);
+                checkBundle = new Bundle(addLine(false),makeTree(expression),reason,refLine1);
                 return;
             }
             Bundle userBundle = findUserTheorem(reason);
@@ -84,8 +98,6 @@ public class Proof {
                 throw new IllegalLineException(reason + " is not a valid reason");
             }
         }
-
-
         try {
             checkLine(checkBundle);
         } catch (Exception e){
@@ -106,7 +118,15 @@ public class Proof {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
 
-    private String addLine() {
+    /**
+     * A call to this will tell you what the next valid line number is.
+     * It views the most recent truth. Whether or not this truth is labelled
+     * "true" in the theorem name determines if the block should be back indednted.
+     *
+     * @param extendBlock
+     * @return String
+     */
+    private String addLine(boolean extendBlock) {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
 
@@ -116,11 +136,11 @@ public class Proof {
     }
 
     public boolean isComplete ( ) {
-    	if (truths.size() == 1){
-            if (truths.get(0).getThrmName().equals("true")){
+    	if (truths.size() - numberOfUserTheorems == 1){
+            if (truths.get(numberOfUserTheorems).getThrmName().equals("true")){
                 return true;
             } else {
-                return false;
+                System.err.println("AHHHHHHHHHHHHHHHHHHH!");
             }
         } else {
             return false;
