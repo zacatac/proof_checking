@@ -92,6 +92,10 @@ public class Proof {
     }
 
     public boolean isComplete ( ) {
+    	//we can add a boolean field done and set to false. 
+    	//in changeTruths when finding the last show and store it's line num,
+    	//we can change done to true at the end to changeTruths if the line num was 1.
+    	//return done;
         return false;
     }
 
