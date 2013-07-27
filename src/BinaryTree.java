@@ -61,25 +61,6 @@ public class BinaryTree {
         return t;
     }
 
-	public static void main (String [ ] args) {
-		BinaryTree t = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
-		//t.print();
-		//System.out.println(t.height());
-		BinaryTree t2 = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
-		//System.out.println(t.equals(t2));//yes this is True
-		BinaryTree t3 = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("e"), null), new TreeNode("c")) );
-		//System.out.println(t.equals(t3));//yes this is False
-		BinaryTree thm = new BinaryTree (new TreeNode("=>", new TreeNode("p"), new TreeNode("&", new TreeNode("p"), new TreeNode("q"))));
-		thm.print();
-		BinaryTree test = new BinaryTree (new TreeNode("=>", new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("&", new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("c"))));
-				
-				//new TreeNode(, new TreeNode("&", new TreeNode(new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("c")))));
-		test.print();
-		BinaryTree test2 = new BinaryTree (new TreeNode("=>", new TreeNode("|", new TreeNode("c"), new TreeNode("b")), new TreeNode("&", new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("c"))));
-		System.out.println(test.canbematched(thm));//is True!
-		System.out.println(test2.canbematched(thm));//is False!
-	}
-
 	public static class TreeNode {
 
 		private Object myItem;

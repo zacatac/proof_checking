@@ -1,11 +1,9 @@
-import javax.swing.tree.TreeNode;
 import java.util.*;
 
 public class Proof {
     private LinkedList<Bundle> truths;
     private Bundle lastShow; //reassign tail in globalTruth to this after completing shows
     private ArrayList<Bundle> allStatements;
-//    TheoremSet myTheorems;
 
     public Proof (TheoremSet theorems) {
         if (theorems == null){
@@ -13,8 +11,6 @@ public class Proof {
         } else {
             truths = theorems.getMyTeorems();
         }
-//        truths.equals(theorems.getMyTeorems());
-//        truths == theorems.getMyTeorems();
         lastShow = null;
         allStatements = new ArrayList<Bundle>();
 
@@ -34,69 +30,62 @@ public class Proof {
         return lastShow;
     }
     public void extendProof (String x) throws IllegalLineException, IllegalInferenceException {
-		String[] splitted = x.split (" ");
-		Stack characters = new Stack( );
-			for(int k=0; k < splitted.length; k++) {
-				if(splitted[k].charAt(0) == '(') {
-//					Expression NewExpress = new Expression(splitted[k]);
-					if (splitted[k].charAt(0) == '(') {
-//						charcters.push(parts[k].charAt(0));
-						//opening parenthesis on stack
-						//**Check for nested parenthesis (not done, maybe it would be easier to use a tree for this
-                        //or some kind of recursion)
-					}
-					if (splitted[k].charAt(0) == ')') {
-						characters.pop();
-
-                        /**
-                         * All of these must be made into Bundles,
-                         * check out the Bundle class for more details
-                         *
-                         * All legal bundles (NO IllegalLineException cases)
-                         * can be passed directly to checkLine so that the line
-                         * can begin to be checked for inference consistency
-                         */
-						if (characters.empty() == false) {
-							//stack should be empty at end
-							//(same number of parens pushed on and popped off)
-							throw new IllegalLineException("");
+        String[] inputs = x.split("\\s+");
+        if (inputs.length > 5 ){
+            throw new IllegalLineException("Input has too many fields");
+        }
 
 
-                        } else if(splitted[0].equals("assume")) {
-							//fill
-							}
-						else if(splitted[0].equals("co")) {
-							//fill
-							}
-						else if(splitted[0].equals("show")) {
-							//call to Proof.show(thisLinesBundle)
-							}
-						else if(splitted[0].equals("mt")) {
-							//fill
-							}
-						else if(splitted[0].equals("mp")) {
-							//fill
-							}
-						else if(splitted[0].equals("repeat")) {
-							//fill
-							}
 
-					}
-				}
-
-			}
+//		String[] splitted = x.split (" ");
+//		Stack characters = new Stack( );
+//			for(int k=0; k < splitted.length; k++) {
+//				if(splitted[k].charAt(0) == '(') {
+////					Expression NewExpress = new Expression(splitted[k]);
+//					if (splitted[k].charAt(0) == '(') {
+////						charcters.push(parts[k].charAt(0));
+//						//opening parenthesis on stack
+//						//**Check for nested parenthesis (not done, maybe it would be easier to use a tree for this
+//                        //or some kind of recursion)
+//					}
+//					if (splitted[k].charAt(0) == ')') {
+//						characters.pop();
+//
+//                        /**
+//                         * All of these must be made into Bundles,
+//                         * check out the Bundle class for more details
+//                         *
+//                         * All legal bundles (NO IllegalLineException cases)
+//                         * can be passed directly to checkLine so that the line
+//                         * can begin to be checked for inference consistency
+//                         */
+//					}
+//				}
+//
+//			}
 	}
+
+    public String  parseLineNumber(String s){
+        return s;
+    }
+
+
 
     public String toString ( ) {
         return "";
     }
 
     public boolean isComplete ( ) {
-    	//we can add a boolean field done and set to false. 
-    	//in changeTruths when finding the last show and store it's line num,
-    	//we can change done to true at the end to changeTruths if the line num was 1.
-    	//return done;
-        return false;
+    	if (truths.size() == 1){
+            if (truths.get(0).getThrmName().equals("true")){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
     }
 
     /**
@@ -431,10 +420,8 @@ public class Proof {
         //given.
         if (thrmName.equals("show")){
             show(checkBundle);
-            return;
         } else if (thrmName.equals("assume")){
             assume(checkBundle);
-            return;
         } else if (thrmName.equals("ic")){
             IC(checkBundle);
         } else if (thrmName.equals("repeat")) {
@@ -453,6 +440,7 @@ public class Proof {
                 userTheorems(thrmBundle,checkBundle);
             }
         }
+        isComplete();
 
     }
 

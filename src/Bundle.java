@@ -1,10 +1,8 @@
-import java.util.*;
 /**
  * Created with IntelliJ IDEA.
  * User: Zack
  * Date: 7/22/13
  * Time: 12:39 PM
- * To change this template use File | Settings | File Templates.
  */
 public class Bundle  {
     private String lineNumber;
@@ -24,10 +22,6 @@ public class Bundle  {
 
 
     public Bundle(String lineNumber,BinaryTree myTree,String thrmName,String refLine1, String refLine2){
-//        if (myTree == null || lineNumber == null || thrmName == null) {
-//            System.err.println("ERROR: The Bundle must be initialized with the Line Number, Binary Tree, and Theorem Name");
-//        }
-
         this.lineNumber = lineNumber;
         this.myTree = myTree;
         this.thrmName = thrmName;
@@ -72,12 +66,6 @@ public class Bundle  {
             return false;
         } else {
             return this.myTree.equals(testBundle.getMyTree());
-//            return ( (this.getLineNumber().equals(testBundle.getLineNumber()) &&
-//                      this.getMyTree().equals(testBundle.getMyTree()) &&
-//                      this.getThrmName().equals(testBundle.getThrmName()) &&
-//                      this.getRefLine1().equals(getRefLine1()) &&
-//                      this.getRefLine2().equals(getRefLine2())
-//                    ));
         }
 
     }

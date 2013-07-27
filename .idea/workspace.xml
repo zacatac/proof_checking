@@ -5,9 +5,9 @@
     <ignored path="61B_project2.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ProofChecker.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374169433533" ignored="false" />
-    <file path="/Proof.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374877975262" ignored="false" />
+    <file path="/Proof.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374950788006" ignored="false" />
     <file path="/fragment.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855307575" ignored="false" />
-    <file path="/Bundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374771786509" ignored="false" />
+    <file path="/Bundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374948835649" ignored="false" />
     <file path="/myListBundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374684592643" ignored="false" />
     <file path="/myListBundleTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374689907454" ignored="false" />
     <file path="/Dummy.txt" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855307575" ignored="false" />
@@ -88,10 +88,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Proof.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Proof.java">
+      <file leaf-file-name="ProofChecker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ProofChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="470" column="18" selection-start="19400" selection-end="19400" vertical-scroll-proportion="0.0">
+            <state line="62" column="39" selection-start="2269" selection-end="2272" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,10 +99,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProofTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Proof.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Proof.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="116" selection-start="490" selection-end="490" vertical-scroll-proportion="0.61077845">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProofTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/ProofTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="26" selection-start="312" selection-end="312" vertical-scroll-proportion="0.27919707">
+            <state line="15" column="26" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,7 +134,7 @@
       <file leaf-file-name="Bundle.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bundle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="71" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.0">
+            <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,7 +143,7 @@
       <file leaf-file-name="BinaryTree.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BinaryTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="246" column="29" selection-start="8052" selection-end="8052" vertical-scroll-proportion="0.0">
+            <state line="100" column="4" selection-start="2342" selection-end="2342" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,14 +186,14 @@
         <option value="$PROJECT_DIR$/src/List.java" />
         <option value="$PROJECT_DIR$/tests/ListTest.java" />
         <option value="$PROJECT_DIR$/tests/bundleTest.java" />
-        <option value="$PROJECT_DIR$/src/ProofChecker.java" />
         <option value="$PROJECT_DIR$/src/Expression.java" />
         <option value="$PROJECT_DIR$/tests/ExpressionTest.java" />
         <option value="$PROJECT_DIR$/src/TheoremSet.java" />
-        <option value="$PROJECT_DIR$/src/Bundle.java" />
         <option value="$PROJECT_DIR$/tests/ProofTest.java" />
         <option value="$PROJECT_DIR$/tests/BinaryTreeTest.java" />
+        <option value="$PROJECT_DIR$/src/Bundle.java" />
         <option value="$PROJECT_DIR$/src/BinaryTree.java" />
+        <option value="$PROJECT_DIR$/src/ProofChecker.java" />
         <option value="$PROJECT_DIR$/src/Proof.java" />
       </list>
     </option>
@@ -542,12 +551,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24848485" sideWeight="0.6712095" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30757576" sideWeight="0.6712095" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.37478706" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="20" y="566" width="1320" height="342" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -641,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/InputSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="64" selection-start="1370" selection-end="1370" vertical-scroll-proportion="1.5351852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="20" selection-start="132" selection-end="140" vertical-scroll-proportion="0.0">
@@ -659,15 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="42" selection-start="88" selection-end="98" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ProofChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="35" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -685,13 +678,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/bundleTest.java">
+    <entry file="file://$PROJECT_DIR$/src/InputSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1999#2007#0" expanded="true" />
-          </folding>
+        <state line="23" column="22" selection-start="667" selection-end="667" vertical-scroll-proportion="0.4436536">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bundle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BinaryTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="4" selection-start="2342" selection-end="2342" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -704,35 +708,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BinaryTree.java">
+    <entry file="file://$PROJECT_DIR$/tests/bundleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="29" selection-start="8052" selection-end="8052" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bundle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="71" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Proof.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="470" column="18" selection-start="19400" selection-end="19400" vertical-scroll-proportion="0.0">
+        <state line="19" column="16" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1999#2007#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/ProofTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="26" selection-start="312" selection-end="312" vertical-scroll-proportion="0.27919707">
+        <state line="15" column="26" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProofChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="39" selection-start="2269" selection-end="2272" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Proof.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="116" selection-start="490" selection-end="490" vertical-scroll-proportion="0.61077845">
+          <folding />
         </state>
       </provider>
     </entry>
