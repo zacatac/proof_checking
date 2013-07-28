@@ -1,12 +1,15 @@
 import java.util.*;
 
 public class Proof {
-    private LineNumber start = new LineNumber("0");
+	private String var = "1";
+	private LineNumber start = new LineNumber(var);
     private LinkedList<Bundle> truths;
     private Bundle lastShow; //reassign tail in globalTruth to this after completing shows
     private ArrayList<Bundle> allStatements;
     private final int numberOfUserTheorems;
-    private String var = "1";
+    
+    private boolean extendBlock = false; 
+    private boolean notmatch = false;
 
     public Proof (TheoremSet theorems) {
         if (theorems.getMyTheorems() == null){
@@ -25,6 +28,8 @@ public class Proof {
         this(null);
     }
     public LineNumber nextLineNumber ( ) {
+//    	start.addLine(extendBlock, notmatch);
+//    	System.out.print(start);
     	return start;
         //return null;
     }
@@ -41,7 +46,7 @@ public class Proof {
             throw new IllegalLineException("Input has too many fields");
         }
         if (inputs.length == 0) {
-
+        	throw new IllegalLineException("Must have input");
         }
 
         if (inputs.length == 1){
@@ -58,14 +63,20 @@ public class Proof {
         if (inputs.length == 2){
             String expression = inputs[1];
             if (reason.equals("show")){
+            	extendBlock = true;
             	
                 checkBundle = new Bundle(var,makeTree(expression),reason);
-                var = start.addLine(true, false);
+                System.out.println(checkBundle);
+                var = start.addLine(true, false); //addline is working, not 
+//                System.out.println(var);
+//                System.out.println(start + "asdf");
                 return;
             }
             if (reason.equals("assume")) {
                 checkBundle = new Bundle(var,makeTree(expression),reason);
-                var = start.addLine(true, false);
+                notmatch = true;
+                var = start.addLine(false, true);
+//                System.out.println(var);
                 return;
             }
             Bundle testBundle = findUserTheorem(reason);
@@ -138,7 +149,8 @@ public class Proof {
      */
     private BinaryTree makeTree(String expression) throws  IllegalLineException{
         //
-        return null;  //To change body of created methods use File | Settings | File Templates.
+    	return BinaryTree.exprTree(expression);
+        //return null;  //To change body of created methods use File | Settings | File Templates.
     }
 
     /**
