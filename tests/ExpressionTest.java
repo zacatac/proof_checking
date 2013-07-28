@@ -12,7 +12,7 @@ public class ExpressionTest extends TestCase {
 			myExpr = new Expression("((p=>q)=>(c&d))");
 			myExpr2 = new Expression("((~p=>q)=>c)");
 			myExpr3 = new Expression("(~a=>~~~b)");
-		} catch (IllegalArgumentException e){
+		} catch (IllegalLineException e){
 			
 		}
 		System.out.println(myExpr.fullExpr);
