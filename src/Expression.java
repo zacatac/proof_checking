@@ -35,7 +35,33 @@ public class Expression {
 			throw new IllegalLineException("Uneven number of parentheses");
 		}
 		for (int i = 0; i < fullExpr.length()-1; i++) {
+			if (expr.CharAt(i) == '|'||expr.CharAt(i) == '&') {
+				if (expr.CharAt(i) == '|'||expr.CharAt(i) == '&') {
+					throw new IllegalLineException("No consecutive operations");
+				}
+			}
+			if (expr.CharAt(i) == '=') {
+				if (expr.CharAt(i) == '=') {
+					throw new IllegalLineException("No consecutive equals");
+				}
+			}
 			
+			if (Character.isLetter(expr.CharAt(i) == "m") && ((expr.CharAt(i+1) == "p") || (expr.CharAt(i+1) =="t"))) {
+				continue;
+			}
+			if (Character.isLetter(expr.CharAt(i) == "i") && (expr.CharAt(i+1) == "c")  {
+				continue;
+			}
+			if (Character.isLetter(expr.CharAt(i) == "c") && (expr.CharAt(i+1) == "o")  {
+				continue;
+			} else {
+				if Character.isLetter(expr.CharAt(i)) {	
+					if Character.isLetter(expr.CharAt(i)) {
+						throw new IllegalLineException("No two letters next to eachother");
+				
+					}
+				}
+			}
 		}
     }
 	
