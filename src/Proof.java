@@ -129,6 +129,28 @@ public class Proof {
             }
 
         }
+        
+        
+        if(inputs.length == 4){
+        	String refLine1 = inputs[1];
+        	String refLine2 = inputs[2];
+        	String expression = inputs[3];
+        	if (reason.equals("mp") || reason.equals("mt") || reason.equals("co")){
+        		if (makeTree(expression).equals(lastShow.getMyTree())) {
+            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
+            		var = start.addLine(false, true);
+            	} else {
+            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
+            		var = start.addLine(false, false);
+            	}
+        		System.out.println(checkBundle);
+        		return;
+        		
+        	} else {
+                throw new IllegalLineException(reason + " is not a valid reason");
+            }
+        }
+        
         try {
             System.out.println( "CHECK BUNDLE: " + checkBundle);
             checkLine(checkBundle);
