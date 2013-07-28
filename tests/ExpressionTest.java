@@ -1,21 +1,28 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Zack
- * Date: 7/25/13
- * Time: 10:58 AM
- * To change this template use File | Settings | File Templates.
- */
 import junit.framework.TestCase;
 
 
 public class ExpressionTest extends TestCase {
-  
+	
 	public void testTree(){
-		Expression myExpr = new Expression("((p=>q)=>(c&d))");
-		
-		System.out.print(myExpr.fullExpr);
+		Expression myExpr = null;
+		Expression myExpr2 = null;
+		try{ 
+			myExpr = new Expression("((p=>q)=>(c&d))");
+			myExpr2 = new Expression("((~p=>q)=>c)");
+		} catch (IllegalLineException e){
+			
+		}
+		System.out.println(myExpr.fullExpr);		
 		BinaryTree b = new BinaryTree();
 		BinaryTree expressionTree = b.exprTree(myExpr.fullExpr);
 		expressionTree.print();
+
+		System.out.println(myExpr2.fullExpr);
+		BinaryTree c = new BinaryTree();
+		expressionTree = c.exprTree(myExpr2.fullExpr);
+		expressionTree.print();
+		
+		
 	}
+	
 }
