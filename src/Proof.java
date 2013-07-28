@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Proof {
-	private LineNumber start = new LineNumber("0");
+    private LineNumber start = new LineNumber("0");
     private LinkedList<Bundle> truths;
     private Bundle lastShow; //reassign tail in globalTruth to this after completing shows
     private ArrayList<Bundle> allStatements;
