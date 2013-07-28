@@ -18,6 +18,9 @@ public class Expression {
 				leftParen = leftParen +1;
 			} else if (fullExpr.charAt(i) == ')') {
 				rightParen = rightParen +1;
+			} else if (fullExpr.charAt(i) == ' ') {
+				(fullExpr.replace (" ", ""))
+		
 			}
 		}
 		if (rightParen != leftParen){
