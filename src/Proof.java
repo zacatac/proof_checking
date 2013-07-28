@@ -52,6 +52,7 @@ public class Proof {
         if (inputs.length == 1){
            if (inputs[0].equals("print")) {
                print();
+               return;
            } else {
                throw new IllegalLineException("The only legal one field input is \"print\"");
            }
