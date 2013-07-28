@@ -12,7 +12,7 @@ public class Proof {
     private boolean notmatch = false;
 
     public Proof (TheoremSet theorems) {
-        if (theorems.getMyTheorems() == null){
+        if (theorems == null || theorems.getMyTheorems() == null){
             truths = new LinkedList<Bundle>();
             numberOfUserTheorems = 0;
         } else {
@@ -109,13 +109,16 @@ public class Proof {
                 return;
             }
             if (reason.equals("ic")){
-                System.out.println(lastShow);
+            	System.out.println(refLine1 + "asdfasdfasdfasdf");
+            	
+                
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
             		var = start.addLine(false, true);
+            	} else {
+                	checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+                	var = start.addLine(false, false);
             	}
-                checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
-                var = start.addLine(false, false);
                 return;
             }
             Bundle userBundle = findUserTheorem(reason);
@@ -138,10 +141,12 @@ public class Proof {
         	if (reason.equals("mp") || reason.equals("mt") || reason.equals("co")){
         		if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
-            		var = start.addLine(false, true);
+            		var = start.addLine(false, false);
+            		System.out.println("HIIIII");
             	} else {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
-            		var = start.addLine(false, false);
+            		var = start.addLine(false, true);
+            		System.out.println("BYEEEEE");
             	}
         		System.out.println(checkBundle);
         		return;
@@ -189,17 +194,17 @@ public class Proof {
     }
 
     public boolean isComplete( ) {
-    	if (truths.size() - numberOfUserTheorems == 1 && numberOfUserTheorems!=0){
-            if (truths.get(numberOfUserTheorems).getThrmName().equals("true")){
+    	//if (truths.size() - numberOfUserTheorems == 1 && numberOfUserTheorems!=0){
+            if (truths.get(numberOfUserTheorems).getMyTree().equals(truths.get(truths.size()-1).getMyTree()) && truths.size()!=numberOfUserTheorems+1){
                 return true;
             } else {
-                System.err.println("AHHHHHHHHHHHHHHHHHHH!");
+                //System.err.println("AHHHHHHHHHHHHHHHHHHH!");
                 return false;
             }
-        } else {
-            return false;
-        }
-
+//        } else {
+//            return false;
+//        }
+//
     }
 
     /**
@@ -250,7 +255,7 @@ public class Proof {
             System.out.println("ASSUME TREE");
             assumeTree.print();
             System.out.println("NOT TREE");
-            notTree.print();
+//            notTree.print();
             System.out.println("LEFT TREE");
             leftTree.print();
             if (assumeTree.equals(notTree) || assumeTree.equals(leftTree)){
