@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ProofChecker {
 
-    private InputSource lines;		// source for steps in the proof
+    private InputSource lines;    	// source for steps in the proof
     private TheoremSet myTheorems;	// theorem repository
     public static boolean iAmDebugging = false;
 
