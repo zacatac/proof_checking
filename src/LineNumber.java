@@ -2,12 +2,10 @@ import java.util.*;
 
 public class LineNumber {
 	private String nondecietfulpreviousnumber = "1";
-
-    public LineNumber(String num){
+	public LineNumber(String num){
 		nondecietfulpreviousnumber = num;
 	}
-
-    private String previousNumber = "1";
+	private String previousNumber = "1";
     private int nestCount = 0;
     public String addLine(boolean extendBlock, boolean notmatch) {
     	nondecietfulpreviousnumber = previousNumber;
@@ -35,13 +33,15 @@ public class LineNumber {
     		endnum++;
     		String begin = previousNumber.substring(0,previousNumber.length()-1);
     		if (!notmatch) { 
-    			previousNumber = begin.substring(0, previousNumber.length()-1);
+    			previousNumber = begin.substring(0, begin.length()-1);
     			end = previousNumber.substring(previousNumber.length()-1,previousNumber.length());
         		endnum = Integer.parseInt(end);
         		endnum++;
         		begin = previousNumber.substring(0,previousNumber.length()-1);
+        		previousNumber = begin + endnum;
         		nondecietfulpreviousnumber = previousNumber;
         		return previousNumber;
+        		
     		}
     		previousNumber = begin + endnum;
     		nondecietfulpreviousnumber = previousNumber;
