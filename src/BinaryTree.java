@@ -177,7 +177,10 @@ public class BinaryTree {
     // The expression is legal, fully parenthesized, contains no blanks, 
     // and involves only the operations + and *.
     protected TreeNode exprTreeHelper (String expr) {
-
+    	//I believe this is pretty much done. What remains is to handle canceling out parens.
+    	//So if the string is like (((???))) it will first auto-modify to (???).
+    	//a very simply iterative helper method can take care of these at the start.
+    	//expr = TestShit.stringsimplify(expr);
         if (expr.charAt(0) != '(') {
         	if ( Character.isLetter(expr.charAt(0))) {
         		return new TreeNode(expr.substring(0,1));	
@@ -216,9 +219,12 @@ public class BinaryTree {
             }
             if (opPos==0) {
             	for (int k=1; k<expr.length()-1; k++) {
-                	if (expr.charAt (k) != '~') {
-                		System.out.println(expr.substring(k));
-                		return new TreeNode("~", exprTreeHelper(expr.substring(k)), null);
+                	if (expr.charAt (k) == '~') {
+                		System.out.println(expr.charAt(k+1));
+                		return new TreeNode("~", exprTreeHelper(expr.substring(k+1)), null);
+                	}
+                	if ( Character.isLetter(expr.charAt(0))) {
+                		return new TreeNode(expr.substring(0,1));	
                 	}
                 }
             }
