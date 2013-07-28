@@ -1,17 +1,20 @@
 import java.util.*;
 
 public class Proof {
+	private LineNumber start = new LineNumber("0");
     private LinkedList<Bundle> truths;
     private Bundle lastShow; //reassign tail in globalTruth to this after completing shows
     private ArrayList<Bundle> allStatements;
     private final int numberOfUserTheorems;
+    private String var = "1";
 
     public Proof (TheoremSet theorems) {
-        if (theorems == null){
+        if (theorems.getMyTheorems() == null){
             truths = new LinkedList<Bundle>();
             numberOfUserTheorems = 0;
         } else {
             truths = theorems.getMyTheorems();
+//            System.out.println(truths);
             numberOfUserTheorems = truths.size();
         }
         lastShow = null;
@@ -22,9 +25,10 @@ public class Proof {
         this(null);
     }
     public LineNumber nextLineNumber ( ) {
-        return null;
+    	return start;
+        //return null;
     }
-
+    
     public LinkedList<Bundle> getTruths(){
         return truths;
     }
@@ -54,16 +58,24 @@ public class Proof {
         if (inputs.length == 2){
             String expression = inputs[1];
             if (reason.equals("show")){
-                checkBundle = new Bundle(addLine(true),makeTree(expression),reason);
+            	
+                checkBundle = new Bundle(var,makeTree(expression),reason);
+                var = start.addLine(true, false);
                 return;
             }
             if (reason.equals("assume")) {
-                checkBundle = new Bundle(addLine(false),makeTree(expression),reason);
+                checkBundle = new Bundle(var,makeTree(expression),reason);
+                var = start.addLine(true, false);
                 return;
             }
             Bundle testBundle = findUserTheorem(reason);
             if (testBundle != null){
-                checkBundle = new Bundle(addLine(false),makeTree(expression),reason);
+            	if (makeTree(expression).equals(lastShow.getMyTree())) {
+            		checkBundle = new Bundle(var,makeTree(expression),reason);
+            		var = start.addLine(false, true);
+            	} else {
+            		checkBundle = new Bundle(var,makeTree(expression),reason);
+            	}	var = start.addLine(false, false);
             } else {
                 if (reason.equals("co")||
                         reason.equals("ic")||
@@ -81,11 +93,22 @@ public class Proof {
             String expression = inputs[2];
             String refLine1 = inputs[1];
             if (reason.equals("repeat")){
-                checkBundle = new Bundle(addLine(false),makeTree(expression),reason,refLine1);
+            	if (makeTree(expression).equals(lastShow.getMyTree())) {
+            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+            		var = start.addLine(false, true);
+            	} else {
+            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+            		var = start.addLine(false, false);
+            	}
                 return;
             }
             if (reason.equals("ic")){
-                checkBundle = new Bundle(addLine(false),makeTree(expression),reason,refLine1);
+            	if (makeTree(expression).equals(lastShow.getMyTree())) {
+            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+            		var = start.addLine(false, true);
+            	}
+                checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+                var = start.addLine(false, false);
                 return;
             }
             Bundle userBundle = findUserTheorem(reason);
@@ -126,21 +149,19 @@ public class Proof {
      * @param extendBlock
      * @return String
      */
-    private String addLine(boolean extendBlock) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
-    }
 
 
     public String toString ( ) {
         return "";
     }
 
-    public boolean isComplete ( ) {
+    public boolean isComplete( ) {
     	if (truths.size() - numberOfUserTheorems == 1){
             if (truths.get(numberOfUserTheorems).getThrmName().equals("true")){
                 return true;
             } else {
                 System.err.println("AHHHHHHHHHHHHHHHHHHH!");
+                return false;
             }
         } else {
             return false;
