@@ -1,57 +1,56 @@
 import java.util.*;
 
 public class LineNumber {
-  private String nondecietfulpreviousnumber = "1";
+	private String nondecietfulpreviousnumber = "1";
 	public LineNumber(String num){
-		previousNumber = num;
+		nondecietfulpreviousnumber = num;
 	}
-	private String nextnum;
-	private String previousNumber = "0";
+	private String previousNumber = "1";
     private int nestCount = 0;
     public String addLine(boolean extendBlock, boolean notmatch) {
     	nondecietfulpreviousnumber = previousNumber;
     	if (previousNumber == "0") {
     		previousNumber = "1";
-    		return(previousNumber);
+    		nondecietfulpreviousnumber = previousNumber;
+    		return previousNumber;
     	}
     	if (previousNumber == "1") {
     		previousNumber = "2";
-    		return(previousNumber);
+    		nondecietfulpreviousnumber = previousNumber;
+    		return previousNumber;
     	} 
-    	if (extendBlock){
+    	if (extendBlock){ // if this is true, we append a new subproof
     		nestCount++;
     		previousNumber  += "."+ nestCount;
+    		nondecietfulpreviousnumber = previousNumber;
     		return previousNumber;
-    	} else {
+    	} else { // if extendBlock is not true, we parse the lineNumber - "x.x.n" into "x.x." and "n"
+    			 // then, if notmatch is false, we change "x.x." into "x.x" and ultimately get "x.(x+1)"
+    			 // if notmatch is true we get x.x.(n+1)
     		nestCount = 0;
     		String end = previousNumber.substring(previousNumber.length()-1,previousNumber.length());
     		int endnum = Integer.parseInt(end);
     		endnum++;
     		String begin = previousNumber.substring(0,previousNumber.length()-1);
-    		if (!notmatch) {
+    		if (!notmatch) { 
     			previousNumber = begin.substring(0, previousNumber.length()-1);
     			end = previousNumber.substring(previousNumber.length()-1,previousNumber.length());
         		endnum = Integer.parseInt(end);
         		endnum++;
         		begin = previousNumber.substring(0,previousNumber.length()-1);
+        		nondecietfulpreviousnumber = previousNumber;
         		return previousNumber;
     		}
     		previousNumber = begin + endnum;
+    		nondecietfulpreviousnumber = previousNumber;
     		return previousNumber;
     	}
     	
 //    	return null;  //To change body of created methods use File | Settings | File Templates.
     }
     
-    public LineNumber next() {
-    	String nextnum = previousNumber;
-    	if (nextnum.equals("0")) {
-    		return new LineNumber("1");
-    	}
-    	return new LineNumber(nextnum);
-    }
+    
     public String toString(){
-    	System.out.println(nondecietfulpreviousnumber);
     	return nondecietfulpreviousnumber;
     }
 
