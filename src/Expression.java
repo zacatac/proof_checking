@@ -1,19 +1,34 @@
+import java.util.*;
 
-//expression tree time!
 
 public class Expression {
-    
-    protected String fullExpr;
-    
-    //FOR TESTING PURPOSES, CONSTRUCTOR DOES NOT THROW ILLEGAL LINE EXCEPTION YET
-    // append throws IllegalLineException to the end of the constructor declaration later
-        //public Expression (String s) throws IllegalLineException {
-    	//    fullExpr = s;	
-    	//}
 
-    public Expression (String s) {
-        fullExpr = s;	
-    }
+    protected String fullExpr; // input
+	//protected BinaryTree expressionTree;
+
+	public Expression (String s) throws IllegalLineException {
+		fullExpr = s;
+		int leftParen = 0; 
+		int rightParen = 0;
+		if (fullExpr == null) {
+			throw new IllegalLineException("Cannot have a null epxression");
+		}
+		for (int i = 0; i < fullExpr.length(); i++) {
+			if (fullExpr.charAt(i) == '(') {
+				leftParen = leftParen +1;
+			} else if (fullExpr.charAt(i) == ')') {
+				rightParen = rightParen +1;
+			}
+		}
+		if (rightParen != leftParen){
+			throw new IllegalLineException("Uneven number of parentheses");
+		}
+	}
+	
+	public BinaryTree exprTree(String fullExpr) {
+		return BinaryTree.exprTree(fullExpr);
+	}
+	
 
 
     //public Expression (String s) throws IllegalLineException {
@@ -84,4 +99,3 @@ public class Expression {
 //	}
 
 }
-
