@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 
 public class TheoremSet {
-     private LinkedList<Bundle> myTheorems;
+    private LinkedList<Bundle> myTheorems;
 
     public TheoremSet ( ) {
     }
@@ -14,6 +14,6 @@ public class TheoremSet {
          //so Expression class should have a method that calls Binary Tree's exprTreeHelper method
          // and we'll call that on e, and pass the resulting binary tree along with String s into a bundle constructor
          //and add this bundle into myTheorems.
+         myTheorems.add(new Bundle(null,e.exprTree(e.fullExpr), s));
         return null;
     }
-}
