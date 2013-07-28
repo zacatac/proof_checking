@@ -61,6 +61,25 @@ public class BinaryTree {
         return t;
     }
 
+	public static void main (String [ ] args) {
+		BinaryTree t = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
+		//t.print();
+		//System.out.println(t.height());
+		BinaryTree t2 = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("d"), null), new TreeNode("c")) );
+		//System.out.println(t.equals(t2));//yes this is True
+		BinaryTree t3 = new BinaryTree (new TreeNode("a", new TreeNode("b", new TreeNode("e"), null), new TreeNode("c")) );
+		//System.out.println(t.equals(t3));//yes this is False
+		BinaryTree thm = new BinaryTree (new TreeNode("=>", new TreeNode("p"), new TreeNode("&", new TreeNode("p"), new TreeNode("q"))));
+		thm.print();
+		BinaryTree test = new BinaryTree (new TreeNode("=>", new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("&", new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("c"))));
+
+				//new TreeNode(, new TreeNode("&", new TreeNode(new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("c")))));
+		test.print();
+		BinaryTree test2 = new BinaryTree (new TreeNode("=>", new TreeNode("|", new TreeNode("c"), new TreeNode("b")), new TreeNode("&", new TreeNode("|", new TreeNode("a"), new TreeNode("b")), new TreeNode("c"))));
+		System.out.println(test.canbematched(thm));//is True!
+		System.out.println(test2.canbematched(thm));//is False!
+	}
+
 	public static class TreeNode {
 
 		private Object myItem;
@@ -158,18 +177,23 @@ public class BinaryTree {
     // The expression is legal, fully parenthesized, contains no blanks, 
     // and involves only the operations + and *.
     protected TreeNode exprTreeHelper (String expr) {
+
         if (expr.charAt(0) != '(') {
-        	return new TreeNode(expr.substring(0,1), null, null); // you fill this in
-        } else {
+        	if ( Character.isLetter(expr.charAt(0))) {
+        		return new TreeNode(expr.substring(0,1));	
+        	}
+        }
+        if (expr.charAt(0) == '~'){
+        	return new TreeNode(expr.substring(0,1), exprTreeHelper(expr.substring(1, expr.length())), null);
+        }else {
             // expr is a parenthesized expression.
             // Strip off the beginning and ending parentheses,
             // find the main operator (an occurrence of + or * not nested
             // in parentheses, and construct the two subtrees.
             int nesting = 0;
             
-            int opPos = 0; // 
+            int opPos = 0; //
             int opPosX = 0; // keeps track of IMPLIES (=>)
-            //int opPosN = 0; // keeps track of NOT (~)
             for (int k=1; k<expr.length()-1; k++) {
                 
             	if (expr.charAt (k) != '(') {
@@ -185,18 +209,35 @@ public class BinaryTree {
                 	} else if(expr.charAt(k) == '=' && expr.charAt(k+1) == '>') {
                 		opPos = k;
                 		opPosX = 1;
-                	} else if(expr.charAt(k) == '~') {
-                		opPos = k;
-                		opPosX = 0;
-
-                	}
+                	} 
                 }
             }
             
-            String opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
-            String opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
-            String op = expr.substring (opPos, opPos + opPosX +1); // myItem
+            String opnd1, opnd2, op;
+            opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
+            opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
+            op = expr.substring (opPos, opPos + opPosX +1); // myItem
             return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
+//            if (notsignal == 0){
+//            	opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
+//                opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
+//                op = expr.substring (opPos, opPos + opPosX +1); // myItem
+//                return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
+//
+//            	
+//            } else{
+//            	
+//            	opnd1 = expr.substring (1, opPos);// creates operand 1 myLeft
+//                opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
+//                System.out.println(opnd1);
+//                System.out.println(opnd2);
+//                
+//                op = expr.substring (opPos, opPos + opPosX +1); // myItem
+//                System.out.println(op);
+//                return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
+//
+//
+//            }
 
         }
     }
@@ -215,7 +256,7 @@ public class BinaryTree {
             if (myRight == null){ // Base case
                 return soFar;
             }
-//            update += soFar + myRight.getMyItem();
+            update += soFar + myRight.getMyItem();
             return inOrderStringHelper(myRight.getMyLeft(),myRight.getMyRight(),update);
         } else {
 
