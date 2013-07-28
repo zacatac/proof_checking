@@ -35,28 +35,28 @@ public class Expression {
 			throw new IllegalLineException("Uneven number of parentheses");
 		}
 		for (int i = 0; i < fullExpr.length()-1; i++) {
-			if (expr.CharAt(i) == '|'||expr.CharAt(i) == '&') {
-				if (expr.CharAt(i) == '|'||expr.CharAt(i) == '&') {
+			if (fullExpr.CharAt(i) == '|'||fullExpr.CharAt(i) == '&') {
+				if (fullExpr.CharAt(i) == '|'||fullExpr.CharAt(i) == '&') {
 					throw new IllegalLineException("No consecutive operations");
 				}
 			}
-			if (expr.CharAt(i) == '=') {
-				if (expr.CharAt(i) == '=') {
+			if (fullExpr.CharAt(i) == '=') {
+				if (fullExpr.CharAt(i) == '=') {
 					throw new IllegalLineException("No consecutive equals");
 				}
 			}
 			
-			if (Character.isLetter(expr.CharAt(i) == "m") && ((expr.CharAt(i+1) == "p") || (expr.CharAt(i+1) =="t"))) {
+			if (Character.isLetter(fullExpr.CharAt(i) == "m") && ((fullExpr.CharAt(i+1) == "p") || (fullExpr.CharAt(i+1) =="t"))) {
 				continue;
 			}
-			if (Character.isLetter(expr.CharAt(i) == "i") && (expr.CharAt(i+1) == "c")  {
+			if (Character.isLetter(fullExpr.CharAt(i) == "i") && (fullExpr.CharAt(i+1) == "c")  {
 				continue;
 			}
-			if (Character.isLetter(expr.CharAt(i) == "c") && (expr.CharAt(i+1) == "o")  {
+			if (Character.isLetter(fullExpr.CharAt(i) == "c") && (fullExpr.CharAt(i+1) == "o")  {
 				continue;
 			} else {
-				if Character.isLetter(expr.CharAt(i)) {	
-					if Character.isLetter(expr.CharAt(i)) {
+				if Character.isLetter(fullExpr.CharAt(i)) {	
+					if Character.isLetter(fullExpr.CharAt(i)) {
 						throw new IllegalLineException("No two letters next to eachother");
 				
 					}
@@ -135,6 +135,7 @@ public class Expression {
 //	} else {
 //		operatorNode2 =  k.substring(operatorLocation += 1, k.length() - 1 );
 //		operatorNode3 = k.substring(operatorLocation, operatorLocation +=1);
+
 //	}
 //	return new ExpNode (operatorNode3, treeChecker(operatorNode2), treeChecker(operatorNode));
 //
