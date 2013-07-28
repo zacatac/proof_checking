@@ -60,28 +60,24 @@ public class Proof {
 
         String reason = inputs[0];
         Bundle checkBundle = null;
-
+        Bundle testBundle = findUserTheorem(reason);
         if (inputs.length == 2){
             String expression = inputs[1];
+            System.out.println(reason.equals("show"));
             if (reason.equals("show")){
             	extendBlock = true;
-            	
-                checkBundle = new Bundle(var,makeTree(expression),reason);
-                System.out.println(checkBundle);
-                var = start.addLine(true, false); //addline is working, not 
-//                System.out.println(var);
-//                System.out.println(start + "asdf");
-                return;
+                System.out.println("TESTING TREE MAKING FOR SHOW");
+                makeTree(expression).print();
+            	checkBundle = new Bundle(var,makeTree(expression),reason);
+                var = start.addLine(true, false);
             }
-            if (reason.equals("assume")) {
+            else if (reason.equals("assume")) {
+                System.out.println("DOEIJDLAKDJFLSDKF");
                 checkBundle = new Bundle(var,makeTree(expression),reason);
                 notmatch = true;
                 var = start.addLine(false, true);
-//                System.out.println(var);
-                return;
             }
-            Bundle testBundle = findUserTheorem(reason);
-            if (testBundle != null){
+            else if (testBundle != null){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason);
             		var = start.addLine(false, true);
@@ -99,9 +95,7 @@ public class Proof {
                 throw new IllegalLineException(reason + " is not a valid reason");
                 }
             }
-        }
-
-        if(inputs.length == 3){
+        } else if(inputs.length == 3){
             String expression = inputs[2];
             String refLine1 = inputs[1];
             if (reason.equals("repeat")){
@@ -115,6 +109,7 @@ public class Proof {
                 return;
             }
             if (reason.equals("ic")){
+                System.out.println(lastShow);
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
             		var = start.addLine(false, true);
@@ -132,12 +127,15 @@ public class Proof {
             } else {
                 throw new IllegalLineException(reason + " is not a valid reason");
             }
+
         }
         try {
+            System.out.println( "CHECK BUNDLE: " + checkBundle);
             checkLine(checkBundle);
         } catch (Exception e){
-            System.err.println("NOOOOOOOOOOOOOOOOOOO");
+            e.printStackTrace();
         }
+
 	}
 
     /**
@@ -159,7 +157,7 @@ public class Proof {
      * It views the most recent truth. Whether or not this truth is labelled
      * "true" in the theorem name determines if the block should be back indednted.
      *
-     * @param extendBlock
+     * @param
      * @return String
      */
 
@@ -169,7 +167,7 @@ public class Proof {
     }
 
     public boolean isComplete( ) {
-    	if (truths.size() - numberOfUserTheorems == 1){
+    	if (truths.size() - numberOfUserTheorems == 1 && numberOfUserTheorems!=0){
             if (truths.get(numberOfUserTheorems).getThrmName().equals("true")){
                 return true;
             } else {
@@ -193,9 +191,9 @@ public class Proof {
         if (showBundle.getMyTree() == null) {
             throw new IllegalLineException("ERROR: Bundle cannot contain a null tree");
         }
-        lastShow = showBundle;
-        allStatements.add(lastShow);
-        truths.add(lastShow); // updates the latest scope.
+        this.lastShow= showBundle;
+        allStatements.add(showBundle);
+        truths.add(showBundle); // updates the latest scope.
     }
 
     /**
@@ -215,13 +213,24 @@ public class Proof {
             System.err.println("ERROR: The truth list is internally inconsistent.");
         }
         if (lastShow.getThrmName().equals("show")){
-            BinaryTree notTree;
-            BinaryTree leftTree;
+            BinaryTree notTree = null;
+            BinaryTree leftTree = null;
             BinaryTree.TreeNode leftNode = lastShowTree.getMyLeft();
-            BinaryTree.TreeNode leftLeftNode = leftNode.getMyLeft();
-            BinaryTree.TreeNode rightLeftNode = leftNode.getMyRight();
-            notTree = new BinaryTree(new BinaryTree.TreeNode("~",lastShowTree.getMyRoot(),null));
-            leftTree = new BinaryTree(new BinaryTree.TreeNode(leftNode.getMyItem(),leftLeftNode,rightLeftNode));
+
+            BinaryTree.TreeNode leftLeftNode = null;
+            BinaryTree.TreeNode rightLeftNode = null;
+            if (leftNode != null){
+                leftLeftNode = leftNode.getMyLeft();
+                rightLeftNode = leftNode.getMyRight();
+                notTree = new BinaryTree(new BinaryTree.TreeNode("~",lastShowTree.getMyRoot(),null));
+                leftTree = new BinaryTree(new BinaryTree.TreeNode(leftNode.getMyItem(),leftLeftNode,rightLeftNode));
+            } else {}
+            System.out.println("ASSUME TREE");
+            assumeTree.print();
+            System.out.println("NOT TREE");
+            notTree.print();
+            System.out.println("LEFT TREE");
+            leftTree.print();
             if (assumeTree.equals(notTree) || assumeTree.equals(leftTree)){
                 allStatements.add(assumeBundle);
                 truths.add(assumeBundle);
