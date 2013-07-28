@@ -206,17 +206,32 @@ public class BinaryTree {
                 	if (expr.charAt(k) =='&' ||expr.charAt(k)=='|') {
             			opPos = k;
             			opPosX = 0;
-                	} else if(expr.charAt(k) == '=' && expr.charAt(k+1) == '>') {
+                	}
+                	
+                	else if(expr.charAt(k) == '=' && expr.charAt(k+1) == '>') {
                 		opPos = k;
                 		opPosX = 1;
                 	} 
                 }
             }
+            if (opPos==0) {
+            	for (int k=1; k<expr.length()-1; k++) {
+                	if (expr.charAt (k) != '~') {
+                		System.out.println(expr.substring(k));
+                		return new TreeNode("~", exprTreeHelper(expr.substring(k)), null);
+                	}
+                }
+            }
+            
             
             String opnd1, opnd2, op;
             opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
             opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
             op = expr.substring (opPos, opPos + opPosX +1); // myItem
+            System.out.println(opnd1);
+            System.out.println(opnd2);
+            System.out.println(op);
+            
             return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
 //            if (notsignal == 0){
 //            	opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
