@@ -20,17 +20,30 @@ public class Expression {
 				rightParen = rightParen +1;
 			} else if (fullExpr.charAt(i) == ' ') {
 				(fullExpr.replace (" ", ""))
-		
+			} else if (fullExpr.charAt(i) != '('||
+			fullExpr.charAt(i) != ')' ||
+			fullExpr.charAt(i) != '|' ||
+			fullExpr.charAt(i) != '&' ||
+			fullExpr.charAt(i) != '(' ||
+			fullExpr.charAt(i) != '=' ||
+			fullExpr.charAt(i) != '>' ||) {
+				throw new IllegalLineException("Invalid character");
 			}
+		
 		}
 		if (rightParen != leftParen){
 			throw new IllegalLineException("Uneven number of parentheses");
 		}
-	}
+		for (int i = 0; i < fullExpr.length()-1; i++) {
+			
+		}
+		
+	
 	
 	public BinaryTree exprTree(String fullExpr) {
 		return BinaryTree.exprTree(fullExpr);
 	}
+}
 	
 
 
