@@ -319,15 +319,23 @@ public class Proof {
         }
 
         //The meat of the MT argument.
+//        implicationBundle.getMyTree().print();
 
         BinaryTree implicationBranchLeft = new BinaryTree(implicationBundle.getMyTree().getMyLeft());
         BinaryTree implicationBranchRight = new BinaryTree(implicationBundle.getMyTree().getMyRight());
         BinaryTree notImplicationBranchRight = new BinaryTree(new BinaryTree.TreeNode("~",implicationBranchRight.getMyRoot(),null));
-        Bundle notImplicationBranchLeft = new Bundle(implicationBundle.getLineNumber(),
+        Bundle notImplicationBundleLeft = new Bundle(implicationBundle.getLineNumber(),
                 new BinaryTree(new BinaryTree.TreeNode("~",implicationBranchLeft.getMyRoot(),null)),
                 implicationBundle.getThrmName());
-        if(notImplicationBranchRight.equals(notRightArgumentBundle)){
-            if(notImplicationBranchLeft.equals(mtBundle.getMyTree())){
+
+        notRightArgumentBundle.getMyTree().print();
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
+        notImplicationBranchRight.print();
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
+        notImplicationBundleLeft.getMyTree().print();
+
+        if(notImplicationBranchRight.equals(notRightArgumentBundle.getMyTree())){
+            if(notImplicationBundleLeft.equals(mtBundle)){
                 allStatements.add(mtBundle);
                 if (mtBundle.equals(lastShow)){
                     changeTruths();

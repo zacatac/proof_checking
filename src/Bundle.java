@@ -1,8 +1,15 @@
 /**
- * Created with IntelliJ IDEA.
- * User: Zack
- * Date: 7/22/13
- * Time: 12:39 PM
+ * This class is meant to define a single
+ * line of user input. There are fields for the 5
+ * possible user entries. The class can has three
+ * constructors that take the 3 different sets of inputs:
+ * no reference line,
+ * one reference line,
+ * two reference lines.
+ * It has getter methods that are utilized by Proof to access
+ * each Bundle's information.
+ *
+ *
  */
 public class Bundle  {
     private String lineNumber;
@@ -53,6 +60,15 @@ public class Bundle  {
         return refLine2;
     }
 
+
+    /**
+     * The equals method for Bundle only checks that the
+     * BinaryTrees stored in myTree of each passed in instance of
+     * Bundle are equivalent. It is not concerned with the
+     * equivalence of reference numbers or theorem names.
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj){
         Bundle testBundle;
@@ -69,6 +85,7 @@ public class Bundle  {
         }
 
     }
+
 
     @Override
     public String toString(){
