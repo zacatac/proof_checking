@@ -31,8 +31,12 @@ public class LineNumber {
     		String end = previousNumber.substring(previousNumber.length()-1,previousNumber.length());
     		int endnum = Integer.parseInt(end);
     		endnum++;
-    		String begin = previousNumber.substring(0,previousNumber.length()-1);
+
     		if (!notmatch) { 
+    			if (previousNumber == end) {
+    				return null;
+    			}
+    			String begin = previousNumber.substring(0,previousNumber.length()-1);
     			previousNumber = begin.substring(0, begin.length()-1);
     			end = previousNumber.substring(previousNumber.length()-1,previousNumber.length());
         		endnum = Integer.parseInt(end);
@@ -43,6 +47,7 @@ public class LineNumber {
         		return previousNumber;
         		
     		}
+    		String begin = previousNumber.substring(0,previousNumber.length()-1);
     		previousNumber = begin + endnum;
     		nondecietfulpreviousnumber = previousNumber;
     		return previousNumber;
