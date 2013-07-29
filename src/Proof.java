@@ -588,10 +588,10 @@ public class Proof {
             throw new Exception("Error: Inconsistency in processing user input line");
         }
 
-        if (thrmBundle.equals(checkBundle)) {//checks trees within each Bundle for equivalence
+        if (thrmBundle.getMyTree().canbematched(checkBundle.getMyTree())) {//checks trees within each Bundle for equivalence
         //I think this is wrong. Need to pattern match--that is, call CANBEMATCHED 
             allStatements.add(checkBundle);
-            if (checkBundle.equals(lastShow)){
+            if (checkBundle.getMyTree().canbematched(lastShow.getMyTree())){
                 changeTruths();
             } else {
                 truths.add(checkBundle);
