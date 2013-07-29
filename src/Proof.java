@@ -8,9 +8,6 @@ public class Proof {
     private Bundle lastShow; //reassign tail in globalTruth to this after completing shows
     private ArrayList<Bundle> allStatements;
     private final int numberOfUserTheorems;
-    
-    private boolean extendBlock = false; 
-    private boolean notmatch = false;
 
     public Proof (TheoremSet theorems) {
         if (theorems == null || theorems.getMyTheorems() == null){
@@ -43,6 +40,8 @@ public class Proof {
     public Bundle getLastShow(){
         return lastShow;
     }
+    
+    //Parses the user input, and calls more methods for error checking
     public void extendProof (String x) throws IllegalLineException, IllegalInferenceException{
     	
     	String[] inputs = x.split("\\s+");
@@ -69,21 +68,39 @@ public class Proof {
         if (inputs.length == 2){
             String expression = inputs[1];
             if (reason.equals("show")){
-            	extendBlock = true;
             	checkBundle = new Bundle(var,makeTree(expression),reason);
+            	try {
+                    checkLine(checkBundle);
+                } catch (Exception e){
+                    return;
+                }
                 var = start.addLine(true, false);
             }
             else if (reason.equals("assume")) {
                 checkBundle = new Bundle(var,makeTree(expression),reason);
-                notmatch = true;
+                try {
+                    checkLine(checkBundle);
+                } catch (Exception e){
+                    return;
+                }
                 var = start.addLine(false, true);
             }
             else if (testBundle != null){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             		var = start.addLine(false, true);
             	} else {
             		checkBundle = new Bundle(var,makeTree(expression),reason);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             	}	var = start.addLine(false, false);
             } else {
                 if (reason.equals("co")||
@@ -103,17 +120,37 @@ public class Proof {
             if (reason.equals("repeat")){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             		var = start.addLine(false, true);
             	} else {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             		var = start.addLine(false, false);
             	}
             } else if (reason.equals("ic")){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             		var = start.addLine(false, false);
             	} else {
                 	checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
+                	try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
                 	var = start.addLine(false, true);
             	}
             
@@ -140,9 +177,19 @@ public class Proof {
         	if (reason.equals("mp") || reason.equals("mt") || reason.equals("co")){
         		if (makeTree(expression).equals(lastShow.getMyTree())) {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             		var = start.addLine(false, false);
             	} else {
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
+            		try {
+                        checkLine(checkBundle);
+                    } catch (Exception e){
+                        return;
+                    }
             		var = start.addLine(false, true);
             	}
         		
@@ -154,12 +201,6 @@ public class Proof {
             		throw new IllegalLineException(reason + " is not a valid reason");
             	}
             }
-        }
-        
-        try {
-            checkLine(checkBundle);
-        } catch (Exception e){
-            e.printStackTrace();
         }
 	}
 
