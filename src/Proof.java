@@ -18,9 +18,7 @@ public class Proof {
             numberOfUserTheorems = 0;
         } else {
             truths = theorems.getMyTheorems();
-//            System.out.println(truths);
             numberOfUserTheorems = truths.size();
-            System.out.println("truths.size() is : " + truths.size());
         }
         lastShow = null;
         allStatements = new ArrayList<Bundle>();
@@ -30,16 +28,12 @@ public class Proof {
         this(null);
     }
     public LineNumber nextLineNumber ( ) {
-//    	start.addLine(extendBlock, notmatch);
-//    	System.out.print(start);
     	if (!isComplete()){
     		return start;
     	} else {
     		System.out.println("Proof is Complete");
     		return null;
     	}
-    		
-        //return null;
     }
     
     public LinkedList<Bundle> getTruths(){
@@ -50,8 +44,7 @@ public class Proof {
     }
     public void extendProof (String x) throws IllegalLineException, IllegalInferenceException{
     	
-    	System.out.println("prevsize = " + truths.size());
-        String[] inputs = x.split("\\s+");
+    	String[] inputs = x.split("\\s+");
         if (inputs.length > 4){
             throw new IllegalLineException("Input has too many fields");
         }
@@ -74,10 +67,8 @@ public class Proof {
         
         if (inputs.length == 2){
             String expression = inputs[1];
-//            System.out.println(reason.equals("show"));
             if (reason.equals("show")){
             	extendBlock = true;
-//                makeTree(expression).print();
             	checkBundle = new Bundle(var,makeTree(expression),reason);
                 var = start.addLine(true, false);
             }
@@ -166,14 +157,10 @@ public class Proof {
         }
         
         try {
-            System.out.println( "CHECK BUNDLE: " + checkBundle);
             checkLine(checkBundle);
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println("size = " + truths.size());
-        
-
 	}
 
     /**
@@ -185,20 +172,8 @@ public class Proof {
      * @throws IllegalLineException
      */
     private BinaryTree makeTree(String expression) throws  IllegalLineException{
-        //
     	return BinaryTree.exprTree(expression);
-        //return null;  //To change body of created methods use File | Settings | File Templates.
     }
-
-    /**
-     * A call to this will tell you what the next valid line number is.
-     * It views the most recent truth. Whether or not this truth is labelled
-     * "true" in the theorem name determines if the block should be back indednted.
-     *
-     * @param
-     * @return String
-     */
-
 
     public String toString ( ) {
         return "";
@@ -424,7 +399,7 @@ public class Proof {
     }
 
     //Finds equivalent binaryTree from staggered not statements
-    public BinaryTree findEquivalentTree(Bundle b){
+    public BinaryTree findEquivalentTree(Bundle b) throws IllegalLineException{
     	int notCount = 0;
         BinaryTree eqTree = b.getMyTree();
         BinaryTree myEqTree;
