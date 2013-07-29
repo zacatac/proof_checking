@@ -10,8 +10,23 @@ public class Expression {
 		fullExpr = s;
 		int leftParen = 0; 
 		int rightParen = 0;
-		if (fullExpr == null) {
-			throw new IllegalLineException("Cannot have a null epxression");
+		
+		fullExpr.replaceAll("\\s","");
+		
+		for (int k = 0; k < fullExpr.length(); k++) {
+			if (fullExpr.charAt(k) == '=') {
+				if (fullExpr.charAt(k+1) != '>') {
+					throw new IllegalLineException("Misformed implication");
+				} else {
+					if ((fullExpr.charAt(0) !='(') || (fullExpr.charAt(fullExpr.length()-1) !=')')); 
+					System.out.println(fullExpr.charAt(0));
+					System.out.println("y");
+						throw new IllegalLineException("Must have parens if => is present on beginning and end");					
+				}			
+		}	
+	}	
+		if (fullExpr == null || fullExpr == "") {
+			throw new IllegalLineException("Cannot have a null expression or empty expression");
 		}
 		for (int i = 0; i < fullExpr.length(); i++) {
 			if (fullExpr.charAt(i) == '(') {
@@ -63,6 +78,7 @@ public class Expression {
 				}
 			}
 		}
+		
     }
 	
 	
