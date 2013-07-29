@@ -14,9 +14,9 @@ public class Expression {
 	public Expression (String s) throws IllegalLineException {
 		fullExpr = s;
 		
-		if (isValid == false){
-			throw new IllegalLineException("Error");
-		}
+//		if (isValid == false){
+//			throw new IllegalLineException("Error");
+//		}
 	}
 	public boolean checkLegal(){
 		int leftParen = 0; 
