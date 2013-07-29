@@ -328,11 +328,6 @@ public class Proof {
                 new BinaryTree(new BinaryTree.TreeNode("~",implicationBranchLeft.getMyRoot(),null)),
                 implicationBundle.getThrmName());
 
-        notRightArgumentBundle.getMyTree().print();
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
-        notImplicationBranchRight.print();
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
-        notImplicationBundleLeft.getMyTree().print();
 
         if(notImplicationBranchRight.equals(notRightArgumentBundle.getMyTree())){
             if(notImplicationBundleLeft.equals(mtBundle)){

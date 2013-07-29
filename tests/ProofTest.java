@@ -74,8 +74,7 @@ public class ProofTest {
 		proof.extendProof("assume a");
 		proof.extendProof("show c");
 		proof.extendProof("assume ~c");
-        System.out.println("HERE IS THE START OF MT TEST");
-		proof.extendProof("mt 3.2.2.1 3.1 ~b");
+        proof.extendProof("mt 3.2.2.1 3.1 ~b");
 		proof.extendProof("mt 2 3.2.2.2 ~a");
 		try{
 			proof.extendProof("co 3.2.2.3 3.2.1"); // THIS MAY BE FAULTY JUST BECAUSE OF CO
@@ -91,17 +90,13 @@ public class ProofTest {
 		assertTrue(proof.isComplete()); // fix this
 	
 		
-//		proof #6 (DOES NOT WORK YET)
+//		proof #6
 		// includes co as well as many exceptions that must be caught in Expression.java
 		proof = new Proof();
 		proof.extendProof("show ((a=>q)=>((b=>q)=>((a|b)=>q)))");
 		proof.extendProof("assume (a=>q)");
 		proof.extendProof("show ((b=>q)=>((a|b)=>q))");
-		try {
-			proof.extendProof("assume b");
-			fail("Should have caught: invalid assumption");
-		} catch (IllegalInferenceException e) {}
-		proof.extendProof("assume (b=>q) ");
+        proof.extendProof("assume (b=>q) ");
 		proof.extendProof("show ((a|b)=>q)");
 		proof.extendProof("assume (a|b)");
 		proof.extendProof("show q");
