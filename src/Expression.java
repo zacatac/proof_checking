@@ -1,62 +1,61 @@
 import java.util.*;
 
-
 public class Expression {
 
     protected String fullExpr; // input
 	//protected BinaryTree expressionTree;
-
+    public String getfullExpr(){
+    	return fullExpr;
+    }
 	public Expression (String s) throws IllegalLineException {
 		fullExpr = s;
 		int leftParen = 0; 
 		int rightParen = 0;
-		
 		fullExpr.replaceAll("\\s","");
-		
-		for (int k = 0; k < fullExpr.length(); k++) {
+/*		for (int k = 0; k < fullExpr.length(); k++) {
 			if (fullExpr.charAt(k) == '=') {
 				if (fullExpr.charAt(k+1) != '>') {
 					throw new IllegalLineException("Misformed implication");
 				} else {
-					if ((fullExpr.charAt(0) !='(') || (fullExpr.charAt(fullExpr.length()-1) !=')')); 
-					System.out.println(fullExpr.charAt(0));
-					System.out.println("y");
+					if ((fullExpr.charAt(k-2) !='(') || (fullExpr.charAt(k+3) !=')')){
+						System.out.println(fullExpr.charAt(0));
+						System.out.println(fullExpr.charAt(fullExpr.length()-1));
 						throw new IllegalLineException("Must have parens if => is present on beginning and end");					
-				}			
+					}else {
+						System.out.println(fullExpr.charAt(0));
+					}
 		}	
-	}	
+	}	*/
 		if (fullExpr == null || fullExpr == "") {
 			throw new IllegalLineException("Cannot have a null expression or empty expression");
 		}
 		for (int i = 0; i < fullExpr.length(); i++) {
-			if (fullExpr.charAt(i) == '(') {
-				leftParen = leftParen +1;
-			} else if (fullExpr.charAt(i) == ')') {
-				rightParen = rightParen +1;
-			} else if (fullExpr.charAt(i) == ' ') {
-				fullExpr.replace (" ", "");
-			} else if (fullExpr.charAt(i) != '('||
-			fullExpr.charAt(i) != ')' ||
-			fullExpr.charAt(i) != '|' ||
-			fullExpr.charAt(i) != '&' ||
-			fullExpr.charAt(i) != '(' ||
-			fullExpr.charAt(i) != '=' ||
-			fullExpr.charAt(i) != '>') {
-				throw new IllegalLineException("Invalid character");
+			
+			if (fullExpr.charAt(i) == '('||
+			fullExpr.charAt(i) == ')' ||
+			Character.isLetter(fullExpr.charAt(i)) ||
+			fullExpr.charAt(i) == '|' ||
+			fullExpr.charAt(i) == '&' ||
+			fullExpr.charAt(i) == '=' ||
+			fullExpr.charAt(i) == '~' ||
+			fullExpr.charAt(i) == '>'){
+				continue;
+			} else {
+				throw new IllegalLineException("Invalid character!!!");
 			}
-		
+			
 		}
 		if (rightParen != leftParen){
 			throw new IllegalLineException("Uneven number of parentheses");
 		}
 		for (int i = 0; i < fullExpr.length()-1; i++) {
 			if (fullExpr.charAt(i) == '|'||fullExpr.charAt(i) == '&') {
-				if (fullExpr.charAt(i) == '|'||fullExpr.charAt(i) == '&') {
+				if (fullExpr.charAt(i+1) == '|'||fullExpr.charAt(i+1) == '&') {
 					throw new IllegalLineException("No consecutive operations");
 				}
 			}
 			if (fullExpr.charAt(i) == '=') {
-				if (fullExpr.charAt(i) == '=') {
+				if (fullExpr.charAt(i+1) == '=') {
 					throw new IllegalLineException("No consecutive equals");
 				}
 			}
@@ -71,18 +70,19 @@ public class Expression {
 				continue;
 			} else {
 				if (Character.isLetter(fullExpr.charAt(i))) {	
-					if (Character.isLetter(fullExpr.charAt(i))) {
+					if (Character.isLetter(fullExpr.charAt(i+1))) {
 						throw new IllegalLineException("No two letters next to eachother");
 				
 					}
 				}
 			}
 		}
+		}
 		
-    }
+    
 	
 	
-	public static BinaryTree exprTree(String fullExpr) {
+	public BinaryTree exprTree(String fullExpr) throws IllegalLineException {
 		return BinaryTree.exprTree(fullExpr);
 	}
 }
