@@ -113,7 +113,7 @@
       <file leaf-file-name="Expression.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="21" selection-start="2849" selection-end="2849" vertical-scroll-proportion="2.5151515">
+            <state line="89" column="21" selection-start="3031" selection-end="3031" vertical-scroll-proportion="2.5151515">
               <folding />
             </state>
           </provider>
@@ -169,7 +169,7 @@
       <file leaf-file-name="ExpressionTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/ExpressionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="9" selection-start="2736" selection-end="2736" vertical-scroll-proportion="-78.2">
+            <state line="117" column="9" selection-start="2719" selection-end="2719" vertical-scroll-proportion="-78.2">
               <folding />
             </state>
           </provider>
@@ -740,7 +740,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/ExpressionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="9" selection-start="2736" selection-end="2736" vertical-scroll-proportion="-78.2">
+        <state line="117" column="9" selection-start="2719" selection-end="2719" vertical-scroll-proportion="-78.2">
           <folding />
         </state>
       </provider>
@@ -791,7 +791,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="21" selection-start="2849" selection-end="2849" vertical-scroll-proportion="2.5151515">
+        <state line="89" column="21" selection-start="3031" selection-end="3031" vertical-scroll-proportion="2.5151515">
           <folding />
         </state>
       </provider>
