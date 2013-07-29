@@ -396,9 +396,9 @@ public class Proof {
             throw new IllegalLineException("Inconsistency in checking for not operator");
         }
 
-
         //The meat of the CO argument.
-
+        
+        
         BinaryTree newNotTree = new BinaryTree(new BinaryTree.TreeNode("~",propositionBundle.getMyTree().getMyRoot(),null));
         Bundle newNotPropositionBundle = new Bundle (
                 propositionBundle.getLineNumber(),
@@ -406,7 +406,8 @@ public class Proof {
                 propositionBundle.getThrmName()
                 );
         if (newNotPropositionBundle.equals(notPropositionBundle)){
-            if(newNotPropositionBundle.equals(coBundle) || notPropositionBundle.equals(coBundle)){
+            if(findEquivalentTree(newNotPropositionBundle).equals(findEquivalentTree(coBundle)) || 
+            		findEquivalentTree(notPropositionBundle).equals(findEquivalentTree(coBundle))){
                 allStatements.add(coBundle);
                 if (coBundle.equals(lastShow)){
                        changeTruths();
@@ -421,6 +422,25 @@ public class Proof {
                     "the second line number referenced");
         }
     }
+
+    //Finds equivalent binaryTree from staggered not statements
+    public BinaryTree findEquivalentTree(Bundle b){
+    	int notCount = 0;
+        BinaryTree eqTree = b.getMyTree();
+        BinaryTree myEqTree;
+    	while (eqTree.getMyRoot().equals("~")) {
+        	notCount++;
+        	eqTree = new BinaryTree(b.getMyTree().getMyLeft());
+        }
+        if ((notCount) % 2 == 0) {
+        	myEqTree = Expression.exprTree(eqTree.getMyRoot().toString());
+        	return myEqTree;
+        } else {
+        	myEqTree = Expression.exprTree("~"+eqTree.getMyRoot().toString());
+        	return myEqTree;
+        }
+    }
+    
 
     public Bundle[] testRootDesired(Bundle firstRef, Bundle secondRef, String inferenceType, String rootDesired) throws IllegalInferenceException {
         Bundle[] rtn = new Bundle[2];
