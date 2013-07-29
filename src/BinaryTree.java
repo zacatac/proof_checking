@@ -215,10 +215,7 @@ public class BinaryTree {
             opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
             opnd2 = expr.substring (opPos + opPosX +1, expr.length()-1); //operand 2 myRight
             op = expr.substring (opPos, opPos + opPosX +1); // myItem
-            System.out.println(opnd1);
-            System.out.println(opnd2);
-            System.out.println(op);
-            
+
             return new TreeNode(op, exprTreeHelper(opnd1), exprTreeHelper(opnd2)); 
 //            if (notsignal == 0){
 //            	opnd1 = expr.substring (1, opPos); // creates operand 1 myLeft
