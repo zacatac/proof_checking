@@ -3,16 +3,6 @@ import java.util.*;
 
 
 public class BinaryTreeTest extends TestCase{
-
-
-import junit.framework.TestCase;
-
-import java.util.*;
-
-
-public class BinaryTreeTest extends TestCase{
-    
-	
 	public void testTree() throws IllegalLineException{
 		Expression myExpr = null;
 		Expression myExpr2 = null;

@@ -21,10 +21,10 @@
     <file path="/bundleTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374704175931" ignored="false" />
     <file path="/ProofTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374854035231" ignored="false" />
     <file path="/BinaryTree.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855712790" ignored="false" />
-    <file path="/TheoremSet.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374954839172" ignored="false" />
+    <file path="/TheoremSet.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375103653151" ignored="false" />
     <file path="$PROJECT_DIR$/../CS61BL/LinkedLists/tests/ListTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374702868746" ignored="false" />
     <file path="/ListTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374703342908" ignored="false" />
-    <file path="/Expression.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374772668288" ignored="false" />
+    <file path="/Expression.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375103635505" ignored="false" />
     <file path="/BinaryTreeTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855435891" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +94,7 @@
       <file leaf-file-name="TheoremSet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="43" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+            <state line="12" column="78" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,16 +112,16 @@
       <file leaf-file-name="Expression.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="33" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
+            <state line="69" column="54" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Proof.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Proof.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Proof.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="22" selection-start="1680" selection-end="1680" vertical-scroll-proportion="0.50163937">
+            <state line="4" column="35" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -148,7 +148,7 @@
       <file leaf-file-name="Bundle.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bundle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="52" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+            <state line="23" column="52" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -163,10 +163,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BinaryTreeTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BinaryTreeTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/BinaryTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="55" selection-start="1570" selection-end="1570" vertical-scroll-proportion="0.0">
+            <state line="4" column="45" selection-start="100" selection-end="100" vertical-scroll-proportion="0.12230216">
               <folding />
             </state>
           </provider>
@@ -175,7 +175,7 @@
       <file leaf-file-name="ExpressionTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/ExpressionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
+            <state line="115" column="9" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -198,15 +198,15 @@
         <option value="$PROJECT_DIR$/src/List.java" />
         <option value="$PROJECT_DIR$/tests/ListTest.java" />
         <option value="$PROJECT_DIR$/tests/bundleTest.java" />
-        <option value="$PROJECT_DIR$/src/Expression.java" />
-        <option value="$PROJECT_DIR$/tests/ExpressionTest.java" />
         <option value="$PROJECT_DIR$/tests/ProofTest.java" />
-        <option value="$PROJECT_DIR$/tests/BinaryTreeTest.java" />
         <option value="$PROJECT_DIR$/src/Bundle.java" />
         <option value="$PROJECT_DIR$/src/BinaryTree.java" />
         <option value="$PROJECT_DIR$/src/ProofChecker.java" />
-        <option value="$PROJECT_DIR$/src/TheoremSet.java" />
         <option value="$PROJECT_DIR$/src/Proof.java" />
+        <option value="$PROJECT_DIR$/src/Expression.java" />
+        <option value="$PROJECT_DIR$/src/TheoremSet.java" />
+        <option value="$PROJECT_DIR$/tests/ExpressionTest.java" />
+        <option value="$PROJECT_DIR$/tests/BinaryTreeTest.java" />
       </list>
     </option>
   </component>
@@ -243,8 +243,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -279,6 +277,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,12 +296,12 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="true" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -335,19 +335,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -373,6 +360,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -546,6 +546,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2880597" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -555,7 +556,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2880597" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -656,23 +656,9 @@
         <state line="7" column="45" selection-start="322" selection-end="322" vertical-scroll-proportion="0.21212122" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/ExpressionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/InputSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="22" selection-start="667" selection-end="667" vertical-scroll-proportion="0.4436536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/BinaryTreeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="55" selection-start="1570" selection-end="1570" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -693,7 +679,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bundle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="52" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+        <state line="23" column="52" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -705,13 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="33" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ProofChecker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="48" selection-start="2471" selection-end="2471" vertical-scroll-proportion="0.0">
@@ -719,16 +698,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="54" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="43" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+        <state line="12" column="78" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Proof.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="22" selection-start="1680" selection-end="1680" vertical-scroll-proportion="0.50163937">
+        <state line="4" column="35" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/ExpressionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="9" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/BinaryTreeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="100" selection-end="100" vertical-scroll-proportion="0.12230216">
           <folding />
         </state>
       </provider>

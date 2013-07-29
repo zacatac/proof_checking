@@ -82,7 +82,7 @@ public class Expression {
     
 	
 	
-	public BinaryTree exprTree(String fullExpr) throws IllegalLineException {
+	public static BinaryTree exprTree(String fullExpr) throws IllegalLineException {
 		return BinaryTree.exprTree(fullExpr);
 	}
 }
