@@ -25,49 +25,48 @@ public class BinaryTreeTest extends TestCase{
 //			System.out.println("Hi");
 //			System.out.println(e);
 		}
-		System.out.println(myExpr.getfullExpr());
-		
+
 		
 		//BinaryTree b = new BinaryTree();
-		BinaryTree expressionTree = myExpr.exprTree(myExpr.fullExpr);
+		BinaryTree expressionTree = myExpr.exprTree(myExpr);
 		System.out.println("Testing Tree 1");
 		expressionTree.print();
 		
 
 		System.out.println(myExpr2.fullExpr);
 		//BinaryTree c = new BinaryTree();
-		expressionTree = myExpr2.exprTree(myExpr2.fullExpr);
+		expressionTree = myExpr2.exprTree(myExpr2);
 		System.out.println("Testing Tree 2");
 		expressionTree.print();
 
 		System.out.println(myExpr3.fullExpr);
 		//BinaryTree d = new BinaryTree();
-		expressionTree = myExpr3.exprTree(myExpr3.fullExpr);
+		expressionTree = myExpr3.exprTree(myExpr3);
 		System.out.println();
 		expressionTree.print();
 		System.out.println("Testing tree 3");
 
 		System.out.println(myExpr4.fullExpr);
 		//BinaryTree d = new BinaryTree();
-		expressionTree = myExpr4.exprTree(myExpr4.fullExpr);
+		expressionTree = myExpr4.exprTree(myExpr4);
 		System.out.println("Testing tree 4");
 		expressionTree.print();
 
 		System.out.println(myExpr5.fullExpr);
 		//BinaryTree d = new BinaryTree();
-		expressionTree = myExpr5.exprTree(myExpr5.fullExpr);
+		expressionTree = myExpr5.exprTree(myExpr5);
 		System.out.println("Testing tree 5");
 		expressionTree.print();
 
 		System.out.println(myExpr6.fullExpr);
 		//BinaryTree d = new BinaryTree();
-		expressionTree = myExpr6.exprTree(myExpr6.fullExpr);
+		expressionTree = myExpr6.exprTree(myExpr6);
 		System.out.println("Testing tree 6");
 		expressionTree.print();
 
 		System.out.println(parenest.fullExpr);
 		//BinaryTree d = new BinaryTree();
-		expressionTree = parenest.exprTree(parenest.fullExpr);
+		expressionTree = parenest.exprTree(parenest);
 		System.out.println("Testing tree7");
 		expressionTree.print();
 	}

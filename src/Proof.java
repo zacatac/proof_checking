@@ -43,7 +43,9 @@ public class Proof {
     
     //Parses the user input, and calls more methods for error checking
     public void extendProof (String x) throws IllegalLineException, IllegalInferenceException{
-    	
+//    	if (x == null){
+//            throw new IllegalLineException("You must input something");
+//        }
     	String[] inputs = x.split("\\s+");
         if (inputs.length > 4){
             throw new IllegalLineException("Input has too many fields");
@@ -213,7 +215,8 @@ public class Proof {
      * @throws IllegalLineException
      */
     private BinaryTree makeTree(String expression) throws  IllegalLineException{
-    	return BinaryTree.exprTree(expression);
+        Expression e = new Expression(expression);
+        return Expression.exprTree(e);
     }
 
     public String toString ( ) {
@@ -258,7 +261,7 @@ public class Proof {
         BinaryTree lastShowTree = null;
 
         try{
-            lastShow  = (Bundle)truths.get(truths.size()-1);
+            lastShow  = truths.get(truths.size()-1);
             lastShowTree = lastShow.getMyTree();
         } catch (NullPointerException n){
             System.err.println("ERROR: List has failed to call the last object");
@@ -443,10 +446,10 @@ public class Proof {
         	eqTree = new BinaryTree(b.getMyTree().getMyLeft());
         }
         if ((notCount) % 2 == 0) {
-        	myEqTree = Expression.exprTree(eqTree.getMyRoot().toString());
+        	myEqTree = Expression.exprTree(new Expression(eqTree.getMyRoot().toString()));
         	return myEqTree;
         } else {
-        	myEqTree = Expression.exprTree("~"+eqTree.getMyRoot().toString());
+        	myEqTree = Expression.exprTree(new Expression("~"+eqTree.getMyRoot().toString()));
         	return myEqTree;
         }
     }
@@ -559,10 +562,16 @@ public class Proof {
             }
         }
 
-        this.lastShow = lastShow;  //it is now not technically a show, but a "true"
+        this.lastShow = lastShow;
 
     }
 
+    /**
+     * Prints out the proof so far, line by line.
+     * It uses the field allStatements which is not
+     * decreased in size as show statements are proven,
+     * unlike the truths field.
+     */
     public void print() {
         Iterator<Bundle> iter = allStatements.iterator();
         while (iter.hasNext()){
@@ -578,9 +587,9 @@ public class Proof {
             }
             outString += bundle.getMyTree().inOrderString() + " ";
             outString += "\n";
+            System.out.print(outString);
         }
     }
-
     /**
      * Takes in a check Bundle and asks if it is consistent
      * within the defined scope (defined by lastTruthInScope)

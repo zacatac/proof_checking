@@ -13,10 +13,8 @@ public class Expression {
     
 	public Expression (String s) throws IllegalLineException {
 		fullExpr = s;
-		
-//		if (isValid == false){
-//			throw new IllegalLineException("Error");
-//		}
+		checkLegal();
+
 	}
 	public boolean checkLegal(){
 		int leftParen = 0; 
@@ -86,11 +84,7 @@ public class Expression {
 		return true;
 		
 	}
-
-    
-
-
-	public static BinaryTree exprTree(String fullExpr) throws IllegalLineException {
-		return BinaryTree.exprTree(fullExpr);
+	public static BinaryTree exprTree(Expression e) throws IllegalLineException {
+		return BinaryTree.exprTree(e.fullExpr);
 	}
 }
