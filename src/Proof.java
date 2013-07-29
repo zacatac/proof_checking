@@ -69,41 +69,21 @@ public class Proof {
         
         if (inputs.length == 2){
             String expression = inputs[1];
-            if (reason.equals("show")){
-            	checkBundle = new Bundle(var,makeTree(expression),reason);
-            	try {
-                    checkLine(checkBundle);
-                } catch (Exception e){
-                    return;
-                }
-                var = start.addLine(true, false);
-            }
-            else if (reason.equals("assume")) {
-                checkBundle = new Bundle(var,makeTree(expression),reason);
-                try {
-                    checkLine(checkBundle);
-                } catch (Exception e){
-                    return;
-                }
-                var = start.addLine(false, true);
+            if (reason.equals("show") || reason.equals("assume")){
+            	checkBundle = new Bundle(null,makeTree(expression),reason);
+                checkLine(checkBundle);
+//                var = start.addLine(true, false);
             }
             else if (testBundle != null){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
-            		checkBundle = new Bundle(var,makeTree(expression),reason);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            		var = start.addLine(false, true);
+            		checkBundle = new Bundle(null,makeTree(expression),reason);
+            		checkLine(checkBundle);
+//            		var = start.addLine(false, true);
             	} else {
-            		checkBundle = new Bundle(var,makeTree(expression),reason);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            	}	var = start.addLine(false, false);
+            		checkBundle = new Bundle(null,makeTree(expression),reason);
+            		checkLine(checkBundle);
+            	}
+//                var = start.addLine(false, false);
             } else {
                 if (reason.equals("co")||
                         reason.equals("ic")||
@@ -121,39 +101,23 @@ public class Proof {
             String refLine1 = inputs[1];
             if (reason.equals("repeat")){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
-            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            		var = start.addLine(false, true);
+            		checkBundle = new Bundle(null,makeTree(expression),reason,refLine1);
+                    checkLine(checkBundle);
+//                    var = start.addLine(false, true);
             	} else {
-            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            		var = start.addLine(false, false);
+            		checkBundle = new Bundle(null,makeTree(expression),reason,refLine1);
+            		checkLine(checkBundle);
+//            		var = start.addLine(false, false);
             	}
             } else if (reason.equals("ic")){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
-            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            		var = start.addLine(false, false);
+            		checkBundle = new Bundle(null,makeTree(expression),reason,refLine1);
+                    checkLine(checkBundle);
+//            		var = start.addLine(false, false);
             	} else {
-                	checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
-                	try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-                	var = start.addLine(false, true);
+                	checkBundle = new Bundle(null,makeTree(expression),reason,refLine1);
+                	checkLine(checkBundle);
+//                	var = start.addLine(false, true);
             	}
             
             
@@ -178,21 +142,13 @@ public class Proof {
         	String expression = inputs[3];
         	if (reason.equals("mp") || reason.equals("mt") || reason.equals("co")){
         		if (makeTree(expression).equals(lastShow.getMyTree())) {
-            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            		var = start.addLine(false, false);
+            		checkBundle = new Bundle(null,makeTree(expression),reason,refLine1,refLine2);
+            		checkLine(checkBundle);
+//            		var = start.addLine(false, false);
             	} else {
-            		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1,refLine2);
-            		try {
-                        checkLine(checkBundle);
-                    } catch (Exception e){
-                        return;
-                    }
-            		var = start.addLine(false, true);
+            		checkBundle = new Bundle(null,makeTree(expression),reason,refLine1,refLine2);
+            		checkLine(checkBundle);
+//            		var = start.addLine(false, true);
             	}
         		
         	} else {
@@ -248,6 +204,7 @@ public class Proof {
             throw new IllegalLineException("ERROR: Bundle cannot contain a null tree");
         }
         this.lastShow = showBundle;
+        start.addLine(1);
         allStatements.add(showBundle);
         truths.add(showBundle); // updates the latest scope.
     }
@@ -255,7 +212,7 @@ public class Proof {
     /**
      * Any assumption can be immediately added to the list of truths
      */
-    public void assume(Bundle assumeBundle) throws Exception{
+    public void assume(Bundle assumeBundle) throws IllegalInferenceException,IllegalLineException{
         BinaryTree assumeTree = assumeBundle.getMyTree();
         Bundle lastShow = null;
         BinaryTree lastShowTree = null;
@@ -272,6 +229,7 @@ public class Proof {
         	BinaryTree notTree;
         	notTree = new BinaryTree(new BinaryTree.TreeNode("~",lastShowTree.getMyRoot(),null));
         	if (assumeTree.equals(notTree)) {
+                start.addLine(2);
         		allStatements.add(assumeBundle);
                 truths.add(assumeBundle);
         	}
@@ -286,6 +244,7 @@ public class Proof {
             notTree = new BinaryTree(new BinaryTree.TreeNode("~",lastShowTree.getMyRoot(),null));
             leftTree = new BinaryTree(new BinaryTree.TreeNode(leftNode.getMyItem(),leftLeftNode,rightLeftNode));
             if (assumeTree.equals(notTree) || assumeTree.equals(leftTree)){
+                start.addLine(2);
                 allStatements.add(assumeBundle);
                 truths.add(assumeBundle);
             } else {
@@ -302,6 +261,7 @@ public class Proof {
             Bundle oldBundle = truths.get(truths.indexOf(repeatBundle));
             if (oldBundle.getLineNumber().equals( repeatBundle.getRefLine1())){
                 truths.remove(repeatBundle);
+                start.addLine(2);
                 allStatements.add(repeatBundle);
                 truths.add(repeatBundle);
             } else {
@@ -322,10 +282,13 @@ public class Proof {
         		Bundle referencedBundle = truths.get(truths.indexOf(rightICBundle));
                 if (!referencedBundle.getThrmName().equals("show")){    //Checks if you are trying to use an unporven statement
                     if (lineReference.equals(referencedBundle.getLineNumber())){   //Checks if you entered the wrong line
+
                         allStatements.add(ICBundle);
                         if (ICBundle.equals(lastShow)){
+                            start.addLine(3);
                             changeTruths(); //If you have proven the most recent show.
                         } else {
+                            start.addLine(2);
                             truths.add(ICBundle); // If you have proven something that isn't the most recent show
                         }
                     } else {
@@ -378,8 +341,10 @@ public class Proof {
             if(notImplicationBundleLeft.equals(mtBundle)){
                 allStatements.add(mtBundle);
                 if (mtBundle.equals(lastShow)){
+                    start.addLine(3);
                     changeTruths();
                 } else {
+                    start.addLine(2);
                     truths.add(mtBundle);
                 }
             } else {
@@ -423,9 +388,11 @@ public class Proof {
             		findEquivalentTree(notPropositionBundle).equals(findEquivalentTree(coBundle))){
                 allStatements.add(coBundle);
                 if (coBundle.equals(lastShow)){
-                       changeTruths();
+                    start.addLine(3);
+                    changeTruths();
                 }else {
-                       truths.add(coBundle);
+                    start.addLine(2);
+                    truths.add(coBundle);
                     }
             } else {
                 throw new IllegalInferenceException("One of the lines referenced must be equivalent to the expression");
@@ -485,10 +452,10 @@ public class Proof {
     public Bundle findUserTheorem(String thrmName){
         Bundle rtnBundle = null;
         for (Bundle truth: truths) {
-            if (truth.getThrmName().equals(thrmName) && truth.getLineNumber()==null){
-                rtnBundle = truth;
-            } else {
-                continue;
+                    if (truth.getThrmName().equals(thrmName) && truth.getLineNumber()==null){
+                        rtnBundle = truth;
+                    } else {
+                        continue;
             }
         }
         return rtnBundle;
@@ -517,8 +484,10 @@ public class Proof {
             if(implicationBranchRight.equals(mpBundle.getMyTree())){
                     allStatements.add(mpBundle);
                 if (mpBundle.equals(lastShow)){
-                	changeTruths();
+                	start.addLine(3);
+                    changeTruths();
                 } else {
+                    start.addLine(2);
                     truths.add(mpBundle);
                 }
             } else {
@@ -537,7 +506,7 @@ public class Proof {
         Bundle lastShow = null;
         while (iter.hasNext()){
             Bundle nxtBundle = iter.next();
-            if (nxtBundle.getThrmName().equals("show")){
+            if (nxtBundle.  getThrmName().equals("show")){
                 lastShow = nxtBundle;
             }
         }
@@ -597,7 +566,7 @@ public class Proof {
      * Set all methods called in checkline to private when you
      * get a chance
      */
-    public void checkLine(Bundle checkBundle) throws Exception{
+    public void checkLine(Bundle checkBundle) throws IllegalLineException, IllegalInferenceException{
 
         String thrmName = checkBundle.getThrmName();
         //Purposely avoided using switch because the
@@ -630,21 +599,22 @@ public class Proof {
     }
 
     public void userTheorems(Bundle thrmBundle, Bundle checkBundle) throws
-                                                                        Exception,
                                                                         IllegalInferenceException,
                                                                         IllegalLineException{
                                                                         	
                                                                         	
         if (thrmBundle == null || checkBundle == null){
-            throw new Exception("Error: Inconsistency in processing user input line");
+            throw new IllegalLineException("Error: Inconsistency in processing user input line");
         }
 
         if (thrmBundle.getMyTree().canbematched(checkBundle.getMyTree())) {//checks trees within each Bundle for equivalence
         //I think this is wrong. Need to pattern match--that is, call CANBEMATCHED 
             allStatements.add(checkBundle);
             if (checkBundle.getMyTree().canbematched(lastShow.getMyTree())){
+                start.addLine(3);
                 changeTruths();
             } else {
+                start.addLine(2);
                 truths.add(checkBundle);
             }
         } else {
