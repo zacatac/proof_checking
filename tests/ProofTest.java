@@ -317,12 +317,43 @@ public class ProofTest {
 
         Bundle MPBundle = new Bundle("4.2.1",new BinaryTree(new BinaryTree.TreeNode("q")),"mp","3","4.1");
 
+        Bundle MPBundleWrongRefLine1 = new Bundle("4.2.1",new BinaryTree(new BinaryTree.TreeNode("q")),"mp","3.1","4.1");
+        Bundle MPBundleWrongRefLine2 = new Bundle("4.2.1",new BinaryTree(new BinaryTree.TreeNode("q")),"mp","3","4.2");
+        Bundle MPBundleWrongArgument1  = new Bundle("4.2.1",new BinaryTree(new BinaryTree.TreeNode("a")),"mp","3","4.1");
+        Bundle MPBundleWrongArgument2  = new Bundle("4.2.1",new BinaryTree(new BinaryTree.TreeNode("~",
+                        new BinaryTree.TreeNode("q",null,null),
+                        null)),"mp","3","4.1");
+
         proof.show(dummyBundle);
         proof.show(show1Bundle);
         proof.assume(assume1Bundle);
         proof.show(show2Bundle);
         proof.assume(assume2Bundle);
         proof.show(show3Bundle);
+
+        try {
+            proof.MP(MPBundleWrongRefLine1);
+            fail("This should capture wrong line references for MP");
+        } catch (IllegalInferenceException i){}
+
+        try {
+            proof.MP(MPBundleWrongRefLine2);
+            fail("This should capture wrong line references for MP");
+        } catch (IllegalInferenceException i) {}
+
+        try {
+            proof.MP(MPBundleWrongArgument1);
+            fail("This should capture wrong expression for MP");
+        } catch (IllegalInferenceException i){
+        }
+
+        try {
+            proof.MP(MPBundleWrongArgument2);
+            fail("This should capture wrong expression for MP");
+        } catch (IllegalInferenceException i) {}
+
+
+
         proof.MP(MPBundle);
 
         LinkedList<Bundle> truths = proof.getTruths();
@@ -334,8 +365,83 @@ public class ProofTest {
 
     }
     @Test
-    public void testMT() {
+    public void testMT() throws IllegalLineException, IllegalInferenceException, Exception{
+        Proof proof = new Proof();
 
+        BinaryTree firstShowTree = new BinaryTree(new BinaryTree.TreeNode("=>",
+                new BinaryTree.TreeNode("=>",
+                        new BinaryTree.TreeNode("a",null,null),
+                        new BinaryTree.TreeNode("b",null,null)),
+                new BinaryTree.TreeNode("=>",
+                        new BinaryTree.TreeNode("=>",
+                                new BinaryTree.TreeNode("b",null,null),
+                                new BinaryTree.TreeNode("c",null,null)),
+                        new BinaryTree.TreeNode("=>",
+                                new BinaryTree.TreeNode("a",null,null),
+                                new BinaryTree.TreeNode("c",null,null)))));
+        firstShowTree.print();
+
+        Bundle firstShow = new Bundle("1",firstShowTree,"show");
+
+        Bundle firstAssume = new Bundle("2",new BinaryTree(new BinaryTree.TreeNode("=>",
+                new BinaryTree.TreeNode("a",null,null),
+                new BinaryTree.TreeNode("b",null,null))),"assume");
+
+        Bundle secondShow = new Bundle("3",new BinaryTree(new BinaryTree.TreeNode("=>",
+                new BinaryTree.TreeNode("=>",
+                        new BinaryTree.TreeNode("b",null,null),
+                        new BinaryTree.TreeNode("c",null,null)),
+                new BinaryTree.TreeNode("=>",
+                        new BinaryTree.TreeNode("a",null,null),
+                        new BinaryTree.TreeNode("c",null,null)))),"show");
+        Bundle secondAssume = new Bundle("3.1",new BinaryTree(new BinaryTree.TreeNode("=>",
+                new BinaryTree.TreeNode("b",null,null),
+                new BinaryTree.TreeNode("c",null,null))),"assume");
+        Bundle thirdShow = new Bundle("3.2",new BinaryTree(new BinaryTree.TreeNode("=>",
+                new BinaryTree.TreeNode("a",null,null),
+                new BinaryTree.TreeNode("c",null,null))),"show");
+        Bundle thirdAssume = new Bundle("3.2.1",new BinaryTree(new BinaryTree.TreeNode("a",null,null)),"assume");
+        Bundle fourthShow = new Bundle("3.2.2", new BinaryTree(new BinaryTree.TreeNode("c")),"show");
+        Bundle fourthAssume = new Bundle("3.2.2.1",new BinaryTree(new BinaryTree.TreeNode("~",
+                new BinaryTree.TreeNode("c",null,null),null)),"assume");
+        Bundle mtBundle = new Bundle("3.2.2.2",new BinaryTree(new BinaryTree.TreeNode("~",
+                new BinaryTree.TreeNode("b",null,null),null)),"mt","3.2.2.1","3.1");
+
+        Bundle mtBundleWrongLineRef1 = new Bundle("3.2.2.2",new BinaryTree(new BinaryTree.TreeNode("~",
+                new BinaryTree.TreeNode("b",null,null),null)),"mt","3.2.2.3","3.1");
+
+        Bundle mtBundleWrongLineRef2 = new Bundle("3.2.2.2",new BinaryTree(new BinaryTree.TreeNode("~",
+                new BinaryTree.TreeNode("b",null,null),null)),"mt","3.2.2.1","3.2");
+
+        proof.show(firstShow);
+        proof.assume(firstAssume);
+        proof.show(secondShow);
+        proof.assume(secondAssume);
+        proof.show(thirdShow);
+        proof.assume(thirdAssume);
+        proof.show(fourthShow);
+        proof.show(fourthAssume);
+        System.out.println(proof.getTruths().getLast());
+
+        try {
+            proof.MT(mtBundleWrongLineRef1);
+            fail("This should capture wrong line references for MT");
+        } catch (IllegalInferenceException i){}
+        System.out.println(proof.getTruths().getLast());
+
+        try {
+            proof.MT(mtBundleWrongLineRef2);
+            fail("This should capture wrong line references for MT");
+        } catch (IllegalInferenceException i) {}
+        System.out.println(proof.getTruths().getLast());
+
+        int sizeBefore = proof.getTruths().size();
+        proof.MT(mtBundle);
+        System.out.println(proof.getTruths().getLast());
+        assertEquals(sizeBefore+1,proof.getTruths().size());
+        assertEquals("mt",proof.getTruths().getLast().getThrmName());
+        assertEquals("3.2.2.1",proof.getLastShow().getLineNumber());
+        assertEquals(proof.getTruths().get(proof.getTruths().size()-2),proof.getLastShow());
     }
 
     @Test
