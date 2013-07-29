@@ -82,7 +82,7 @@ public class Expression {
     }
 	
 	
-	public BinaryTree exprTree(String fullExpr) {
+	public static BinaryTree exprTree(String fullExpr) {
 		return BinaryTree.exprTree(fullExpr);
 	}
 }
