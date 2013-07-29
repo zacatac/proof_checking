@@ -14,6 +14,160 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProofTest {
 
+    
+    @Test
+	public void testExtendProof() throws Exception {
+//		proof #1 (works)
+		Proof proof = new Proof();
+		proof.extendProof("show (q=>q)");
+		proof.extendProof("assume q");
+		proof.extendProof("ic 2 (q=>q)");
+		assertTrue(proof.isComplete());
+		
+//		proof #2 (works)
+		proof = new Proof();
+		proof.extendProof("show (p=>((p=>q)=>q))");
+		proof.extendProof("assume p");
+		proof.extendProof("show ((p=>q)=>q)");
+		proof.extendProof("assume (p=>q)");
+		proof.extendProof("show q");
+		proof.extendProof("mp 2 3.1 q");
+		proof.extendProof("ic 3.2 ((p=>q)=>q)");
+		proof.extendProof("ic 3 (p=>((p=>q)=>q))");
+		assertTrue(proof.isComplete());
+		
+//		proof #3 (DOES NOT WORK YET)
+		//should work, won't work - co error
+		proof = new Proof();
+		proof.extendProof("show (~~p=>p)");
+		proof.extendProof("assume ~~p");
+		proof.extendProof("show p");
+		proof.extendProof("assume ~p");
+		proof.extendProof("co 2 3.1 p");
+		proof.extendProof("ic 3 (~~p=>p)");
+		assertTrue(proof.isComplete());
+		
+//		proof #4 (works)
+		proof = new Proof();
+		proof.extendProof("show ((a=>(b=>c))=>((a=>b)=>(a=>c)))");
+		proof.extendProof("assume (a=>(b=>c))");
+		proof.extendProof("show ((a=>b)=>(a=>c))");
+		proof.extendProof("assume (a=>b)");
+		proof.extendProof("show (a=>c)");
+		proof.extendProof("assume a");
+		proof.extendProof("mp 2 3.2.1 (b=>c)");
+		proof.extendProof("mp 3.2.1 3.1 b");
+		proof.extendProof("mp 3.2.3 3.2.2 c");
+		proof.extendProof("ic 3.2.4 (a=>c)");
+		proof.extendProof("ic 3.2 ((a=>b)=>(a=>c))");
+		proof.extendProof("ic 3 ((a=>(b=>c))=>((a=>b)=>(a=>c)))");
+		assertTrue(proof.isComplete());
+		
+//		proof #5 (DOES NOT WORK YET - has co) 
+		//this test includes co and built in errors
+		proof = new Proof();
+		proof.extendProof("show ((a=>b)=>((b=>c)=>(a=>c)))");
+		proof.extendProof("assume (a=>b)");
+		proof.extendProof("show ((b=>c)=>(a=>c))");
+		proof.extendProof("assume (b=>c)");
+		proof.extendProof("show (a=>c)");
+		proof.extendProof("assume a");
+		proof.extendProof("show c");
+		proof.extendProof("assume ~c");
+		proof.extendProof("mt 3.2.2.1 3.1 ~b");
+		proof.extendProof("mt 2 3.2.2.2 ~a");
+		try{
+			proof.extendProof("co 3.2.2.3 3.2.1"); // THIS MAY BE FAULTY JUST BECAUSE OF CO
+			fail("Should have caught: wrong number of things");
+		} catch (IllegalLineException e){
+			
+		}
+		
+		proof.extendProof("co 3.2.2.3 3.2.1 c"); // DOUBLE CHECK CO
+		try{
+			proof.extendProof("ic 3.2.2.4 (a=>c)");
+			fail("Should have caught: Unable to refer to line 3.2.2.4");
+		}catch (IllegalLineException e){
+			
+		}
+		proof.extendProof("ic 3.2.2 (a=>c)");
+		proof.extendProof("ic 3.2 ((b=>c)=>(a=>c))");
+		proof.extendProof("ic 3 ((a=>b)=>((b=>c)=>(a=>c)))");
+		assertTrue(proof.isComplete()); // fix this
+	
+		
+//		proof #6 (DOES NOT WORK YET)
+		// includes co as well as many exceptions that must be caught in Expression.java
+		proof = new Proof();
+		proof.extendProof("show ((a=>q)=>((b=>q)=>((a|b)=>q)))");
+		try{
+			proof.extendProof("assume a=>q");
+			fail("Should have caught: bad expression needs parens");
+		} catch (IllegalLineException e) {}
+		proof.extendProof("assume (a=>q)");
+		proof.extendProof("show ((b=>q)=>((a|b)=>q))");
+		try {
+			proof.extendProof("assume b");
+			fail("Should have caught: invalid assumption");
+		} catch (IllegalLineException e) {}
+		proof.extendProof("assume (b=>q) ");
+		proof.extendProof("show ((a|b)=>q)");
+		try{
+			proof.extendProof("assume (a&b)  ");
+			fail("Should have caught: illegal assumption: must be (b=>q) or ~((b=>q)=>((a|b)=>q))");
+		}catch (IllegalLineException e) {}
+		try{ 
+			proof.extendProof("assume q");
+			fail("Should have caught: illegal assumption (must be (a|b) and ~((a|b)=>q))");
+		} catch (IllegalLineException e){}
+		proof.extendProof("assume (a|b)");
+		proof.extendProof("show q");
+		try{
+			proof.extendProof("assume (~q)");
+			fail("Should have caught: no parens with ~");
+		} catch (IllegalLineException e){}
+		proof.extendProof("assume ~q");
+		try {
+			proof.extendProof("mt 2.2.2.1 2 a");
+			fail("Should have caught: refLine 2.2.2.1 DNE");
+		}catch (IllegalLineException e){}
+		try {
+			proof.extendProof("mt 3.2.1 2 a");
+			fail("should have caught: bad inference");
+		} catch (IllegalLineException e){}
+		try {
+			proof.extendProof("mt 3.2.2.1 2 a");
+			fail("should have caught: bad inference");
+		} catch (IllegalLineException e){}
+		proof.extendProof("mt 3.2.2.1 2 ~a");
+		proof.extendProof("mt 3.1 3.2.2.1 ~b");
+		try {
+			proof.extendProof("not-o-creation (~a=>(~b=>~(a|b)))");
+			fail("Should have caught:theorem name misspelled");
+		}catch (IllegalLineException e){}
+		try{
+			proof.extendProof("not-or-creation (~a=>(~b=>~(b|b)))");
+			fail("Should have caught: bad theorem application: p=a, p=b, p is theorem variable");
+		}catch (IllegalLineException e) {}
+		proof.extendProof("not-or-creation (~a=>(~b=>~(a|b)))");
+		proof.extendProof("mp 3.2.2.4 3.2.2.2 (~b=>~(a|b))");
+		try{
+			proof.extendProof("mq 3.2.2.3 3.2.2.5 ~(a|b) ");
+			fail("Should have caught: reason mq does not exist");
+		}catch (IllegalLineException e){}
+		proof.extendProof("mp 3.2.2.3 3.2.2.5 ~(a|b)");
+		proof.extendProof(" co 3.2.2.6 3.2.1 ((a=>q)=>((b=>q)=>((a|b)=>q)))"); //legal but useless
+		proof.extendProof("co 3.2.2.6 3.2.1 q");
+		try{
+			proof.extendProof("ic 3.2.2.8 ((a|b)=>q)");
+			fail("Should have caught: inaccessible line");
+		} catch(IllegalLineException e){}
+		proof.extendProof("ic 3.2.2 ((a|b)=>q) ");
+		proof.extendProof("ic 3.2 ((b=>q)=>((a|b)=>q))");
+		proof.extendProof("ic 3 ((a=>q)=>((b=>q)=>((a|b)=>q)))");
+		assertTrue(proof.isComplete());
+		
+	}
 
     @Test
     public void testShow() throws Exception {
