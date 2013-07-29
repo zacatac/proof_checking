@@ -109,7 +109,6 @@ public class Proof {
             	}
             } else if (reason.equals("ic")){
             	if (makeTree(expression).equals(lastShow.getMyTree())) {
-            		System.out.println("check last show");
             		checkBundle = new Bundle(var,makeTree(expression),reason,refLine1);
             		var = start.addLine(false, false);
             	} else {
@@ -206,7 +205,6 @@ public class Proof {
         this.lastShow = showBundle;
         allStatements.add(showBundle);
         truths.add(showBundle); // updates the latest scope.
-        System.out.println("truths.size() is : " + truths.size());
     }
 
     /**
@@ -270,26 +268,20 @@ public class Proof {
     }
 
     public void IC(Bundle ICBundle) throws IllegalLineException,IllegalInferenceException{
-    	System.out.println("check ic");
-        BinaryTree expressionToProve = ICBundle.getMyTree();
+    	BinaryTree expressionToProve = ICBundle.getMyTree();
         String lineReference = ICBundle.getRefLine1();
         BinaryTree rightTree = new BinaryTree(expressionToProve.getMyRight());
         Bundle rightICBundle = new Bundle(ICBundle.getLineNumber(),rightTree,ICBundle.getThrmName(),ICBundle.getRefLine1());
         if (expressionToProve.getMyRoot().getMyItem().equals("=>")){      //The expression must have an implication
-            System.out.println("Indeed dealing w/ implication");
-        	if (truths.contains(rightICBundle)){            // Checks if this expression is in the list of truths and shows
-        		System.out.println("Right hand side valid");
+            if (truths.contains(rightICBundle)){            // Checks if this expression is in the list of truths and shows
         		Bundle referencedBundle = truths.get(truths.indexOf(rightICBundle));
                 if (!referencedBundle.getThrmName().equals("show")){    //Checks if you are trying to use an unporven statement
                     if (lineReference.equals(referencedBundle.getLineNumber())){   //Checks if you entered the wrong line
                         allStatements.add(ICBundle);
                         if (ICBundle.equals(lastShow)){
                             changeTruths(); //If you have proven the most recent show.
-                            System.out.println("Get line 307");
-                        
                         } else {
                             truths.add(ICBundle); // If you have proven something that isn't the most recent show
-                            System.out.println("Get line 311");
                         }
                     } else {
                         throw new IllegalInferenceException("Line number does not reference the \n right-hand side  of the implication");
@@ -307,7 +299,6 @@ public class Proof {
 
 
     public void MT(Bundle mtBundle) throws IllegalInferenceException, IllegalLineException {
-    	System.out.println("check mt");
     	Bundle firstReference = findReferences(mtBundle.getRefLine1());
         Bundle secondReference = findReferences(mtBundle.getRefLine2());
 
@@ -354,8 +345,7 @@ public class Proof {
     }
 
     public void CO(Bundle coBundle) throws IllegalInferenceException, IllegalLineException{
-        System.out.println("check co");
-    	Bundle firstReference = findReferences(coBundle.getRefLine1());
+        Bundle firstReference = findReferences(coBundle.getRefLine1());
         Bundle secondReference = findReferences(coBundle.getRefLine2());
 
         //Testing that the references are already proved statements
@@ -458,7 +448,6 @@ public class Proof {
 
 
     public void MP(Bundle mpBundle) throws IllegalInferenceException,IllegalLineException {
-    	System.out.println("check mp");
     	Bundle firstReference = findReferences(mpBundle.getRefLine1());
         Bundle secondReference = findReferences(mpBundle.getRefLine2());
 
@@ -480,8 +469,7 @@ public class Proof {
             if(implicationBranchRight.equals(mpBundle.getMyTree())){
                     allStatements.add(mpBundle);
                 if (mpBundle.equals(lastShow)){
-                	System.out.println("checking reaching changetruths mp");
-                    changeTruths();
+                	changeTruths();
                 } else {
                     truths.add(mpBundle);
                 }
@@ -510,12 +498,11 @@ public class Proof {
         } else {
             int lastIndex = truths.lastIndexOf(lastShow);
             lastShow = new Bundle(lastShow.getLineNumber(),lastShow.getMyTree(),"true");
-            System.out.println(lastShow.getLineNumber());
             int truthsSize = truths.size();
             truths.add(lastIndex, lastShow);
             for (int i = lastIndex+1; i < truthsSize+1; i++){
                 truths.removeLast();
-                System.out.println(truths.size());
+
             }
         }
         iter = truths.iterator();
@@ -546,7 +533,6 @@ public class Proof {
             }
             outString += bundle.getMyTree().inOrderString() + " ";
             outString += "\n";
-            System.out.println(outString);
         }
     }
 
