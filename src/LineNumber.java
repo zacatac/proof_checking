@@ -39,7 +39,12 @@ public class LineNumber {
             return newLine;
 
         } else if (i == 3)  {      //dedent
-            String chopped = "" + lastLine.substring(0,lastLine.length()-2);
+            String chopped;
+            if (lastLine.length() < 2){
+                chopped = lastLine.substring(0);
+            } else {
+                chopped = "" + lastLine.substring(0,lastLine.length()-2);
+            }
             int newNum = Integer.parseInt("" + chopped.charAt(chopped.length()-1));
             newNum++;
             String reallyChopped = chopped.substring(0,chopped.length()-1);

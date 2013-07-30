@@ -440,6 +440,12 @@ public class Proof {
     public Bundle findReferences(String refLine){
         Bundle rtnBundle = null;
         for (Bundle truth:truths) {
+            if (truth == null){
+                System.out.println("THIS SHOULDN:t HAPPEN");
+            }
+            else if (refLine == null){
+                System.out.println("MAYBE THIS COULD HAPPEN");
+            }
             if (truth.getLineNumber().equals(refLine) && !truth.getThrmName().equals("show")){
                 rtnBundle = truth;
             } else {
@@ -601,13 +607,15 @@ public class Proof {
     public void userTheorems(Bundle thrmBundle, Bundle checkBundle) throws
                                                                         IllegalInferenceException,
                                                                         IllegalLineException{
-                                                                        	
-                                                                        	
         if (thrmBundle == null || checkBundle == null){
             throw new IllegalLineException("Error: Inconsistency in processing user input line");
         }
 
-        if (thrmBundle.getMyTree().canbematched(checkBundle.getMyTree())) {//checks trees within each Bundle for equivalence
+        System.out.println("THRM BUNDLE ");
+        thrmBundle.getMyTree().print();
+        System.out.println();
+        checkBundle.getMyTree().print();
+        if (checkBundle.getMyTree().canbematched(thrmBundle.getMyTree())) {//checks trees within each Bundle for equivalence
         //I think this is wrong. Need to pattern match--that is, call CANBEMATCHED 
             allStatements.add(checkBundle);
             if (checkBundle.getMyTree().canbematched(lastShow.getMyTree())){

@@ -8,8 +8,8 @@
     <ignored path="61B_project2.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ProofChecker.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375121575980" ignored="false" />
-    <file path="/Proof.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375140107853" ignored="false" />
-    <file path="/fragment.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375140911134" ignored="false" />
+    <file path="/Proof.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375143488382" ignored="false" />
+    <file path="/fragment.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375143257946" ignored="false" />
     <file path="/Bundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374948835649" ignored="false" />
     <file path="/myListBundle.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374684592643" ignored="false" />
     <file path="/myListBundleTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374689907454" ignored="false" />
@@ -20,13 +20,13 @@
     <file path="/a.dummy" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374685696053" ignored="false" />
     <file path="/bundleTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374704175931" ignored="false" />
     <file path="/ProofTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375118850848" ignored="false" />
-    <file path="/BinaryTree.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855712790" ignored="false" />
+    <file path="/BinaryTree.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375143126538" ignored="false" />
     <file path="/TheoremSet.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375136053451" ignored="false" />
     <file path="$PROJECT_DIR$/../CS61BL/LinkedLists/tests/ListTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374702868746" ignored="false" />
     <file path="/ListTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374703342908" ignored="false" />
     <file path="/Expression.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375132355774" ignored="false" />
     <file path="/BinaryTreeTest.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1374855435891" ignored="false" />
-    <file path="/LineNumber.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375140345559" ignored="false" />
+    <file path="/LineNumber.java" changelist="698b4a4c-8526-42c9-8489-940580da5982" time="1375142121374" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,19 +110,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Expression.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Expression.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="21" selection-start="3031" selection-end="3031" vertical-scroll-proportion="2.5151515">
+            <state line="94" column="0" selection-start="3001" selection-end="3001" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Proof.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Proof.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Proof.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="23" selection-start="7641" selection-end="7641" vertical-scroll-proportion="-5.44">
+            <state line="446" column="62" selection-start="19072" selection-end="19072" vertical-scroll-proportion="0.5541045">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,7 +133,7 @@
       <file leaf-file-name="LineNumber.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LineNumber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="74" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0">
+            <state line="48" column="24" selection-start="1631" selection-end="1631" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,7 +151,7 @@
       <file leaf-file-name="BinaryTreeTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/BinaryTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="75" selection-start="3920" selection-end="3920" vertical-scroll-proportion="-7.32">
+            <state line="16" column="48" selection-start="407" selection-end="408" vertical-scroll-proportion="-6.96">
               <folding />
             </state>
           </provider>
@@ -160,7 +160,7 @@
       <file leaf-file-name="BinaryTree.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BinaryTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="52" selection-start="675" selection-end="686" vertical-scroll-proportion="-1.0">
+            <state line="46" column="35" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -197,10 +197,10 @@
         <option value="$PROJECT_DIR$/src/ProofChecker.java" />
         <option value="$PROJECT_DIR$/tests/BinaryTreeTest.java" />
         <option value="$PROJECT_DIR$/src/TheoremSet.java" />
-        <option value="$PROJECT_DIR$/src/Proof.java" />
+        <option value="$PROJECT_DIR$/src/Expression.java" />
         <option value="$PROJECT_DIR$/src/LineNumber.java" />
         <option value="$PROJECT_DIR$/src/BinaryTree.java" />
-        <option value="$PROJECT_DIR$/src/Expression.java" />
+        <option value="$PROJECT_DIR$/src/Proof.java" />
       </list>
     </option>
   </component>
@@ -468,7 +468,7 @@
     <configuration default="false" name="ProofChecker/w/theo/w/proofFile" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ProofChecker" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="C:\Users\Zack\Desktop\theoremsBuildDemorgan.txt " />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\Zack\Desktop\theoremsBuildDemorgan.txt C:\Users\Zack\Desktop\proof6.txt" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -611,7 +611,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09015152" sideWeight="0.7119403" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.37649062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-13" y="231" width="1320" height="342" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="true" weight="0.37649062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-13" y="231" width="1320" height="342" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -731,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="47" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/ExpressionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="117" column="9" selection-start="2719" selection-end="2719" vertical-scroll-proportion="-78.2">
@@ -745,40 +738,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/BinaryTreeTest.java">
+    <entry file="file://$PROJECT_DIR$/src/TheoremSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="75" selection-start="3920" selection-end="3920" vertical-scroll-proportion="-7.32">
+        <state line="16" column="47" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BinaryTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="52" selection-start="675" selection-end="686" vertical-scroll-proportion="-1.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/ProofTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="483" column="5" selection-start="20947" selection-end="20947" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LineNumber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="74" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Proof.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="23" selection-start="7641" selection-end="7641" vertical-scroll-proportion="-5.44">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,8 +754,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="21" selection-start="3031" selection-end="3031" vertical-scroll-proportion="2.5151515">
+        <state line="94" column="0" selection-start="3001" selection-end="3001" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/BinaryTreeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="48" selection-start="407" selection-end="408" vertical-scroll-proportion="-6.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LineNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="24" selection-start="1631" selection-end="1631" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/ProofTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="483" column="5" selection-start="20947" selection-end="20947" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BinaryTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="35" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Proof.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="446" column="62" selection-start="19072" selection-end="19072" vertical-scroll-proportion="0.5541045">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -33,16 +33,18 @@ public class BinaryTree {
     public boolean canbematched(BinaryTree theoremtree) {
         TreeMap<Object, TreeNode> test = matchhelper(theoremtree.myRoot, new TreeMap<Object, TreeNode>());
         if (test.containsKey("false")) {
+
             return false;
         }
         return true;
     }
-    private TreeMap<Object, TreeNode> matchhelper(TreeNode thm, TreeMap t) {
+    private TreeMap<Object, TreeNode> matchhelper(TreeNode thm, TreeMap<Object, TreeNode> t) {
+
         if (thm==null) {
             return t;
         }
         if (thm.myItem.equals("=>")||thm.myItem.equals("&")||thm.myItem.equals("|")||thm.myItem.equals("~")) {
-            if (thm.myItem!=myRoot.myItem) {
+            if (!thm.myItem.equals(myRoot.myItem)) {
                 t.put("false", myRoot);
                 return t;
             }
